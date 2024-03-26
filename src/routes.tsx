@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { App } from "./App";
+import { App } from "./App.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/lista-compra",
         element: <div>Lista de la Compra</div>,
+      },
+      {
+        path: "/patterns.tsx",
+        element: <div>Patterns</div>,
       },
     ],
   },
