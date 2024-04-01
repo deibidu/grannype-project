@@ -6,12 +6,12 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export const MainWrapper = ({ children }: Props): React.ReactNode => {
+const MainWrapper = ({ children }: Props): React.ReactNode => {
   return (
     <div className="card">
-      <Header></Header>
-      {children}
-      <Footer />
+      <Header>{children}</Header>
+
+      <Footer>{children}</Footer>
     </div>
   );
 };

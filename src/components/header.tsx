@@ -1,7 +1,11 @@
-import React from "react";
+import { ReactNode } from "react";
 
-export const Header = ({ children }) => {
-  return <div></div>;
+interface HeaderProps {
+  children: ReactNode;
+}
+
+const Header = ({ children }: HeaderProps) => {
+  return <div>{children}</div>;
 };
 
 export default Header;

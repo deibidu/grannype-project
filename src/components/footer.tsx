@@ -1,7 +1,11 @@
-import React from "react";
+import { ReactNode } from "react";
 
-export const Footer = ({ children }) => {
-  return <div></div>;
+interface FooterProps {
+  children: ReactNode;
+}
+
+const Footer = ({ children }: FooterProps) => {
+  return <div>{children}</div>;
 };
 
 export default Footer;
