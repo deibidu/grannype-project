@@ -1,36 +1,49 @@
+/* El html del botón debe ir en otro archivo y llevar la ruta aquí o desde este mismo archivo?
+
+html {
+    <button class="icon-button">
+        <img src="ruta_a_la_imagen.png" alt="Arrow" class="icon">
+    <span class="text">Write here</span>
+    </button>
+}*/
+
 /*Botón primario: color interior con letra e ícono en $color-white-creamy*/
 
 .button-primary {
-    min-width: 130px;
-    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    background-color: $color-green-lettuce;
     color: $color-white-creamy;
-    padding: 5px 10px;
-    /*font-family: futura; Hay que poner la familia de la fuente? O al tener una pattern de tipografías no es necesario?*/
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    outline: none;
+    /*font-family: Futura Lt MD; Hay que poner la familia de la fuente? O al tener una pattern de tipografías no es necesario?*/
+    padding: 16px 20px;
+    border: none;
     border-radius: 8px;
-    background: $color-green-lettuce;
+    font-size: 16px;
+    cursor:pointer;
+    
+    .icon {
+        margin-right: 10px;
+    }
 }
 
 /*Botón secundario (contorno): contorno, letra e ícono del mismo color. Interior $color-white-creamy */
 
 .button-secondary {
-    min-width: 130px;
-    height: 40px;
-    color: $color-green-lettuce;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    border-radius: 8px;
-    background: $color-white-creamy;
-    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    background-color: $color-white-creamy;
     border: 1px solid $color-green-lettuce;
+    color: $color-green-lettuce;
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor:pointer;
+    
+    .icon {
+        margin-right: 10px;
+    }
 }
 
-/*Botón disabled: botón deshabilitido, con posibilidad de que sea relleno o con contorno y color disabled.*/
+/*Botón disabled: debemos crear un botón a parte o como es igual que el primary y seocndary, simplemente cambiar el color?
+
+botón deshabilitido, con posibilidad de que sea relleno o con contorno y color disabled.*/
