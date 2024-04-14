@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { App } from "./App.tsx";
+import { ListaCompra } from "./pages/lista-de-compras.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -19,8 +20,8 @@ export const router = createBrowserRouter([
         element: <div>Calendario</div>,
       },
       {
-        path: "/lista-compra",
-        element: <div>Lista de la Compra</div>,
+        path: "/lista-de-compras",
+        element: <ListaCompra />,
       },
       {
         path: "/patterns.tsx",

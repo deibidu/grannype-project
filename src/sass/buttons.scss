@@ -10,38 +10,39 @@ html {
 /*Botón primario: color interior con letra e ícono en $color-white-creamy*/
 
 .button-primary {
-    display: inline-flex;
-    align-items: center;
-    background-color: $color-green-lettuce;
-    color: $color-white-creamy;
-    /*font-family: Futura Lt MD; Hay que poner la familia de la fuente? O al tener una pattern de tipografías no es necesario?*/
-    padding: 16px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor:pointer;
-    
-    .icon {
-        margin-right: 10px;
-    }
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-green-lettuce;
+  color: $color-white-creamy;
+  font-family: "Futura Medium Bt";
+  /*font-family: Futura Lt MD; Hay que poner la familia de la fuente? O al tener una pattern de tipografías no es necesario?*/
+  padding: 16px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+
+  .icon {
+    margin-right: 10px;
+  }
 }
 
 /*Botón secundario (contorno): contorno, letra e ícono del mismo color. Interior $color-white-creamy */
 
 .button-secondary {
-    display: inline-flex;
-    align-items: center;
-    background-color: $color-white-creamy;
-    border: 1px solid $color-green-lettuce;
-    color: $color-green-lettuce;
-    padding: 16px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor:pointer;
-    
-    .icon {
-        margin-right: 10px;
-    }
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-white-creamy;
+  border: 1px solid $color-green-lettuce;
+  color: $color-green-lettuce;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+
+  .icon {
+    margin-right: 10px;
+  }
 }
 
 /*Botón disabled: debemos crear un botón a parte o como es igual que el primary y seocndary, simplemente cambiar el color?

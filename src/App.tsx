@@ -1,5 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import "./sass/style.scss";
+import "./sass/colors.scss";
+import ListaCompra from "./pages/lista-de-compras";
 
 export const App = () => {
   return (
@@ -8,7 +10,7 @@ export const App = () => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/recetario">Recetario</NavLink>
         <NavLink to="/calendario">Calendario</NavLink>
-        <NavLink to="/lista-compra">Lista de la Compra</NavLink>
+        <NavLink to="/lista-de-compras">Lista de la Compra</NavLink>
       </div>
       <div>
         <Outlet />
