@@ -16,8 +16,6 @@ export function ListaCompra() {
   return (
     <>
       <div>
-        <input type="text" ref={input} />
-        <button onClick={() => addItem(input.current?.value || "")}>+</button>
         <ul>
           {items.map((item) => (
             <li key={item.id}>
@@ -26,6 +24,8 @@ export function ListaCompra() {
             </li>
           ))}
         </ul>
+        <input type="text" ref={input} />
+        <button onClick={() => addItem(input.current?.value || "")}>+</button>
       </div>
     </>
   );
