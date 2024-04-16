@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../sass/colors.scss";
 
 export function ListaCompra() {
-  const [items, setItems] = React.useState<{ id: string; value: string }[]>([]);
-  const input = React.useRef<HTMLInputElement>(null);
+  const [items, setItems] = useState<{ id: string; value: string }[]>([]);
+  const [inputValue, setInputValue] = useState("");
 
-  const addItem = (text: string) => {
-    setItems([...items, { id: items.toString(), value: text }]);
+  const addItem = () => {
+    if (inputValue.trim()) {
+      setItems([...items, { id: Date.now().toString(), value: inputValue }]);
+      setInputValue("");
+    }
   };
 
   const handleRemove = (id: string) => {
@@ -24,8 +27,12 @@ export function ListaCompra() {
             </li>
           ))}
         </ul>
-        <input type="text" ref={input} />
-        <button onClick={() => addItem(input.current?.value || "")}>+</button>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <button onClick={addItem}>+</button>
       </div>
     </>
   );
