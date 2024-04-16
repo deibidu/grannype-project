@@ -7,9 +7,9 @@ html {
     </button>
 }*/
 
-/*Botón primario: color interior con letra e ícono en $color-white-creamy*/
+/*Botón primario: relleno de un color main con tipografía en $color-white-creamy*/
 
-.button-primary {
+.button__primary-green {
   display: inline-flex;
   align-items: center;
   background-color: $color-green-lettuce;
@@ -21,15 +21,11 @@ html {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-
-  .icon {
-    margin-right: 10px;
-  }
 }
 
-/*Botón secundario (contorno): contorno, letra e ícono del mismo color. Interior $color-white-creamy */
+/*Botón secundario (contorno): contorno, letra e ícono de un color main e interior $color-white-creamy */
 
-.button-secondary {
+.button__secondary-green {
   display: inline-flex;
   align-items: center;
   background-color: $color-white-creamy;
@@ -39,10 +35,6 @@ html {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-
-  .icon {
-    margin-right: 10px;
-  }
 }
 
 /*Botón disabled: debemos crear un botón a parte o como es igual que el primary y seocndary, simplemente cambiar el color?

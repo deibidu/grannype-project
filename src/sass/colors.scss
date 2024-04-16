@@ -1,3 +1,4 @@
+/*Las variables de colores*/
 $color-white-creamy: #fdfbf5;
 $color-orange-neo: #ff683f;
 $color-green-lettuce: #4aaf73;
@@ -6,3 +7,32 @@ $color-pink-bubblegum: #dc5f7d;
 $color-yellow-mustard: #fad314;
 $color-grey-disabled: #e3e3e3;
 $color-black-the-darkness: #000000;
+
+/*Uso de las variables de colores*/
+
+$main-theme-color: $color-green-lettuce;
+$main-theme-menu: $color-orange-neon;
+$color-theme-recetario: $color-green-lettuce;
+$color-theme-crear: $color-yellow-mustard;
+$color-theme-calendario: $color-blue-vynil;
+$color-theme-compra: $color-pink-bubblegum;
+
+
+/*Las variables de colores
+--color-white-creamy: #fdfbf5;
+--color-orange-neo: #ff683f;
+--color-green-lettuce: #4aaf73;
+--color-blue-vinyl: #3e86c1;
+--color-pink-bubblegum: #dc5f7d;
+--color-yellow-mustard: #fad314;
+--color-grey-disabled: #e3e3e3;
+--color-black-the-darkness: #000000;
+
+/*Uso de las variables de colores
+
+--main-theme-color: --color-green-lettuce;
+--main-theme-menu: --color-orange-neon;
+--color-theme-recetario: --color-green-lettuce;
+--color-theme-crear: --color-yellow-mustard;
+--color-theme-calendario: --color-blue-vynil;
+--color-theme-compra: --color-pink-bubblegum;*/
