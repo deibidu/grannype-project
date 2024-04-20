@@ -1,13 +1,26 @@
-/* El html del botón debe ir en otro archivo y llevar la ruta aquí o desde este mismo archivo?
-
+/*
 html {
-    <button class="icon-button">
+    <button class="button__primary-COLOR">
         <img src="./assets/images" alt="Arrow" class="icon">
-    <span class="text">Write here</span>
+    <span class="text">TEXT</span>
     </button>
-}*/
+}
+*/
 
 /*Botón primario: relleno de un color main con tipografía en $color-white-creamy*/
+
+.button__primary-orange {
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-orange-neon;
+  color: $color-white-creamy;
+  font-family: "Futura Medium Bt";
+  padding: 16px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 .button__primary-green {
   display: inline-flex;
@@ -15,7 +28,45 @@ html {
   background-color: $color-green-lettuce;
   color: $color-white-creamy;
   font-family: "Futura Medium Bt";
-  /*font-family: Futura Lt MD; Hay que poner la familia de la fuente? O al tener una pattern de tipografías no es necesario?*/
+  padding: 16px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button__primary-yellow {
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-yellow-mustard;
+  color: $color-white-creamy;
+  font-family: "Futura Medium Bt";
+  padding: 16px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button__primary-blue {
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-blue-vinyl;
+  color: $color-white-creamy;
+  font-family: "Futura Medium Bt";
+  padding: 16px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button__primary-pink {
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-pink-bubblegum;
+  color: $color-white-creamy;
+  font-family: "Futura Medium Bt";
   padding: 16px 20px;
   border: none;
   border-radius: 8px;
@@ -24,6 +75,18 @@ html {
 }
 
 /*Botón secundario (contorno): contorno, letra e ícono de un color main e interior $color-white-creamy */
+
+.button__secondary-orange {
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-white-creamy;
+  border: 1px solid $color-orange-neon;
+  color: $color-orange-neon;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 .button__secondary-green {
   display: inline-flex;
@@ -37,6 +100,38 @@ html {
   cursor: pointer;
 }
 
-/*Botón disabled: debemos crear un botón a parte o como es igual que el primary y seocndary, simplemente cambiar el color?
+.button__secondary-yellow {
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-white-creamy;
+  border: 1px solid $color-yellow-mustard;
+  color: $color-yellow-mustard;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-botón deshabilitido, con posibilidad de que sea relleno o con contorno y color disabled.*/
+.button__secondary-blue {
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-white-creamy;
+  border: 1px solid $color-blue-vinyl;
+  color: $color-blue-vinyl;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button__secondary-pink {
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-white-creamy;
+  border: 1px solid $color-pink-bubblegum;
+  color: $color-pink-bubblegum;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
