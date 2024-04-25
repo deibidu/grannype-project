@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import "./sass/style.scss";
 import "./sass/colors.scss";
 import ListaCompra from "./pages/lista-de-compras";
+import Calendario from "./pages/calendario";
 
 export const App = () => {
   return (

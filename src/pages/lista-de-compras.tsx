@@ -32,6 +32,7 @@ export function ListaCompra() {
   return (
     <>
       <div>
+        <h1 className="$h3">Lista de la Compra</h1>
         <ul>
           {items.map((item) => (
             <li

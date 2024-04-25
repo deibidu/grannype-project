@@ -1,0 +1,6 @@
+@import url(../sass/colors.scss);
+
+:root {
+  --fc-border-color: $color-grey-disabled;
+  --fc-daygrid-event-dot-width: 5px;
+}
