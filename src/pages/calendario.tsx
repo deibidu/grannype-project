@@ -1,24 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
-import "../sass/colors.scss";
-import "../sass/style.scss";
-// import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import { v4 as uuid } from "uuid";
 
-export function Calendario() {
+type Event = {
+  title: string;
+  id: string;
+  start: Date;
+  end: Date;
+};
+
+export const Calendario = () => {
+  const [events, setEvents] = useState<Event[]>([]);
+  const handleSelect = (info: Event) => {
+    const { start, end } = info;
+    const eventNamePrompt = prompt("Enter, event name");
+    if (eventNamePrompt) {
+      setEvents([
+        ...events,
+        {
+          start,
+          end,
+          title: eventNamePrompt,
+          id: uuid(),
+        },
+      ]);
+    }
+  };
+
+  const EventItem = ({ event }: { event: Event }) => {
+    return (
+      <div>
+        <p>{event.title}</p>
+      </div>
+    );
+  };
   return (
     <div>
       <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView={"dayGridMonth"}
+        editable
+        selectable
+        events={events}
+        select={handleSelect}
         headerToolbar={{
-          start: "",
+          start: "today prev next",
           center: "title",
-          end: "prev today next",
+          end: "dayGridMonth dayGridWeek dayGridDay",
         }}
+        eventContent={(arg) => <EventItem event={arg.event} />}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        initialView={"dayGridMonth, interactionPlugin"}
       />
     </div>
   );
-}
+};
