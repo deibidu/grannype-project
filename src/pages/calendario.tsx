@@ -12,9 +12,17 @@ type Event = {
   end: Date;
 };
 
+const EventItem = ({ event }: { event: Pick<Event, `title`> }) => {
+  return (
+    <div>
+      <p>{event.title}</p>
+    </div>
+  );
+};
+
 export const Calendario = () => {
   const [events, setEvents] = useState<Event[]>([]);
-  const handleSelect = (info: Event) => {
+  const handleSelect = (info: Pick<Event, `start` | `end`>) => {
     const { start, end } = info;
     const eventNamePrompt = prompt("Enter, event name");
     if (eventNamePrompt) {
@@ -30,13 +38,6 @@ export const Calendario = () => {
     }
   };
 
-  const EventItem = ({ event }: { event: Event }) => {
-    return (
-      <div>
-        <p>{event.title}</p>
-      </div>
-    );
-  };
   return (
     <div>
       <FullCalendar
