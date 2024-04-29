@@ -1,7 +1,7 @@
-import { render, screen } from "@testing-library/react";
+/* import { render, screen } from "@testing-library/react";
 import { Footer } from "./footer";
 
-/*describe("Button", () => {
+describe("Button", () => {
   it("Should render a button with the text indicated", () => {
     const text = "hola";
 

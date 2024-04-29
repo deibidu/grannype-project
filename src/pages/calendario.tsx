@@ -52,7 +52,7 @@ export const Calendario = () => {
         }}
         eventContent={(arg) => <EventItem event={arg.event} />}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView={"dayGridMonth, interactionPlugin"}
+        initialView="dayGridMonth"
       />
     </div>
   );
