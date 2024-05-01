@@ -34,17 +34,17 @@ function OrangeHeader() {
                                 <p className="section-name">Recetario</p>
                         </div>
 
-                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid $color-yellow-mustard' }}>
+                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid #DC5F7D' }}>
                             <img src="../assets/Images/Crear_Icon_Grey" alt="Crear_Icon_Grey" className="icon">
                                 <p className="section-name">Crear receta</p>
                         </div>
 
-                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid $color-blue-vynil' }}>
+                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid #3E86C1' }}>
                             <img src="../assets/Images/Calendario_Icon_Grey" alt="Calendario_Icon_Grey" className="icon"></img>
                             <p className="section-name">Calendario</p>
                         </div>
 
-                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid $color-pink-bubblegum' }}>
+                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid #DC5F7D' }}>
                             <img src="../assets/Images/Compra_Icon_Grey" alt="Compra_Icon_Grey" className="icon">
                                 <p className="section-name">Compra</p>
                         </div>
