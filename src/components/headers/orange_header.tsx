@@ -1,5 +1,5 @@
 import React from 'react';
-import '.../sass/header.scss'; /* Importa los estilos sass comunes */
+import '.../sass/headers.scss'; /* Importa los estilos sass comunes */
 
 function OrangeHeader() {
 
@@ -18,41 +18,40 @@ function OrangeHeader() {
 
                         <div className="user-container">
                             <p>Bienvenido, David</p>
-                            <img src="icon_user.png" alt="Ícono de Usuario" className="user-icon">
+                            <img src="../assets/images/User_Icon_Creamy" alt="Ícono de Usuario" className="user-icon">
                         </div>
                     </div>
 
                     <div className="section-header">
 
-                        <div class="container" style="background-color: #FF683F; color:#FDFBF5;">
-                            <img src="../assets/Menu_Icon_Creamy" alt="Menu_Icon_Creamy" className="icon"></img>
-                            <p className="section-name">Menú</p>
+                        <div className="container" style={{ backgroundColor: '#FF683F', color: '#FDFBF5' }}>
+                            <img src="../assets/Images/Menu_Icon_Creamy" alt="Menu_Icon_Creamy" className="icon">
+                                <p className="section-name">Menú</p>
                         </div>
 
-                        <div class="container" style={{ background- color: $color-white-creamy, border-bottom: 3px solid #4AAF73}}>
-                        <img src="recetario_icon.png" alt="Recetario_Icon_Grey" className="icon"></img>
-                        <p className="section-name">Recetario</p>
-                    </div>
+                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid #4AAF73' }}>
+                            <img src="../assets/Images/Recetario_Icon_Grey" alt="Recetario_Icon_Grey" className="icon">
+                                <p className="section-name">Recetario</p>
+                        </div>
 
-                    <div class="container" style="background-color: #FDFBF5; border-bottom: 3px solid #FAD314;">
-                        <img src="crear_receta_icon.png" alt="Crear_Icon_Grey" className="icon"></img>
-                        <p className="section-name">Crear receta</p>
-                    </div>
+                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid $color-yellow-mustard' }}>
+                            <img src="../assets/Images/Crear_Icon_Grey" alt="Crear_Icon_Grey" className="icon">
+                                <p className="section-name">Crear receta</p>
+                        </div>
 
-                    <div class="container" style="background-color: #FDFBF5; border-bottom: 3px solid #3E86C1;">
-                        <img src="calendario_icon.png" alt="Calendario_Icon_Grey" className="icon"></img>
-                        <p className="section-name">Calendario</p>
-                    </div>
+                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid $color-blue-vynil' }}>
+                            <img src="../assets/Images/Calendario_Icon_Grey" alt="Calendario_Icon_Grey" className="icon"></img>
+                            <p className="section-name">Calendario</p>
+                        </div>
 
-                    <div class="container" style="background-color: #FDFBF5; border-bottom: 3px solid #DC5F7D;">
-                        <img src="compra_icon.png" alt="Compra_Icon_Grey" className="icon"></img>
-                        <p className="section-name">Compra</p>
+                        <div className="container" style={{ backgroundColor: '#FDFBF5', borderBottom: '3px solid $color-pink-bubblegum' }}>
+                            <img src="../assets/Images/Compra_Icon_Grey" alt="Compra_Icon_Grey" className="icon">
+                                <p className="section-name">Compra</p>
+                        </div>
+
                     </div>
 
                 </div>
-
-                </div>
-                
 
             }
 
