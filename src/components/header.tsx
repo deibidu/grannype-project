@@ -1,11 +1,24 @@
-import { ReactNode } from "react";
+import React from "react";
+import "../sass/headers.scss";
 
-interface HeaderProps {
-  children: ReactNode;
-}
+export const Header = () => {
+  return (
+    <div>
+      {" "}
+      <div className="common-header">
+        <div className="logo-container">
+          <img src="logo.png" alt="Logo" className="logo"></img>
+        </div>
 
-const Header = ({ children }: HeaderProps) => {
-  return <div>{children}</div>;
+        <div className="user-container">
+          <p>Bienvenido, David</p>
+          <img
+            src="../assets/images/User_Icon_Creamy"
+            alt="Ícono de Usuario"
+            className="user-icon"
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
-
-export default Header;

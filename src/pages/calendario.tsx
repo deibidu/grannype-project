@@ -4,6 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { v4 as uuid } from "uuid";
+import ReactModal from "react-modal";
 
 type Event = {
   title: string;
@@ -22,22 +23,35 @@ const EventItem = ({ event }: { event: Pick<Event, `title`> }) => {
 
 export const Calendario = () => {
   const [events, setEvents] = useState<Event[]>([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [start, setStart] = useState<Date | null>(null);
+  const [end, setEnd] = useState<Date | null>(null);
+
   const handleSelect = (info: Pick<Event, `start` | `end`>) => {
     const { start, end } = info;
-    const eventNamePrompt = prompt("Enter, event name");
-    if (eventNamePrompt) {
+    setStart(start);
+    setEnd(end);
+    setModalIsOpen(true);
+  };
+
+  const handleSubmit = () => {
+    if (title && start && end) {
       setEvents([
         ...events,
         {
           start,
           end,
-          title: eventNamePrompt,
+          title,
           id: uuid(),
         },
       ]);
+      setModalIsOpen(false);
+      setTitle("");
+      setStart(null);
+      setEnd(null);
     }
   };
-
   return (
     <div>
       <FullCalendar
@@ -54,6 +68,20 @@ export const Calendario = () => {
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
       />
+      <ReactModal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        contentLabel="Add Event"
+      >
+        <input
+          type="text"
+          placeholder="Event Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <button onClick={handleSubmit}>Submit</button> {}
+        <button onClick={() => setModalIsOpen(false)}>Cancel</button> {}
+      </ReactModal>
     </div>
   );
 };

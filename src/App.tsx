@@ -1,12 +1,16 @@
 import { NavLink, Outlet } from "react-router-dom";
 import "./sass/style.scss";
 import "./sass/colors.scss";
+import { Header } from "./components/header";
+import { Footer } from "./components/footer";
 import ListaCompra from "./pages/lista-de-compras";
 import Calendario from "./pages/calendario";
+import Recetario from "./pages/recetario";
 
 export const App = () => {
   return (
     <div>
+      <Header />
       <div className="menu">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/recetario">Recetario</NavLink>
@@ -16,6 +20,7 @@ export const App = () => {
       <div>
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 };
