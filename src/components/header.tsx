@@ -7,13 +7,13 @@ export const Header = () => {
       {" "}
       <div className="common-header">
         <div className="logo-container">
-          <img src="logo.png" alt="Logo" className="logo"></img>
+          <img src='../assets/images/Logo_Grannype.svg' alt="Logo" className="logo"></img>
         </div>
 
         <div className="user-container">
           <p>Bienvenido, David</p>
           <img
-            src="../assets/images/User_Icon_Creamy"
+            src="../assets/images/User_Icon_Creamy.svg"
             alt="Ícono de Usuario"
             className="user-icon"
           />
