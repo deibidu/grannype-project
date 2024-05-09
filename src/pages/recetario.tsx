@@ -8,6 +8,7 @@ export function Recetario() {
     "Patata",
     "Arroz",
     "Huevo",
+    "Garbanzos"
   ]);
 
   /*Cómo indicar que hay que buscar las palabras en las recetas creadas pero no crear una lista con los nombres de las recetas, sino una función que busque entre todas las recetas. Esta mal  */
