@@ -8,25 +8,57 @@ export function Recetario() {
     "Patata",
     "Arroz",
     "Huevo",
-    "Garbanzos"
+    "Garbanzos",
   ]);
 
-  /*Cómo indicar que hay que buscar las palabras en las recetas creadas pero no crear una lista con los nombres de las recetas, sino una función que busque entre todas las recetas. Esta mal  */
-
   const [recipes, setRecipes] = useState([]);
+  const [newRecipeName, setNewRecipeName] = useState("");
+  const [newRecipeContent, setNewRecipeContent] = useState("");
 
   function handleSearch(event) {
-    setSearch(event.target.value);
+    if (event.key === "Enter") {
+      setSearch(event.target.value);
+    }
   }
 
   function handleSuggestClick(suggest) {
     setSearch(suggest);
   }
 
-  /*Filtra las recetas según el término de búsqueda*/
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.name.toLowerCase().includes(search.toLowerCase())
-  );
+  function handleSearchButtonClick() {
+    setSearch(newRecipeName);
+  }
+
+  function handleCreateRecipe() {
+    if (newRecipeName.trim() !== "" && newRecipeContent.trim() !== "") {
+      const newRecipe = {
+        id: recipes.length + 1,
+        name: newRecipeName,
+        content: newRecipeContent,
+      };
+      setRecipes([...recipes, newRecipe]);
+      setNewRecipeName("");
+      setNewRecipeContent("");
+    }
+  }
+
+  function handleEditRecipe(id) {
+
+  }
+
+  function handleDeleteRecipe(id) {
+    const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
+    setRecipes(updatedRecipes);
+  }
+
+  // Filtra las recetas según el término de búsqueda
+  const filteredRecipes = search
+    ? recipes.filter(
+      (recipe) =>
+        recipe.name.toLowerCase().includes(search.toLowerCase()) ||
+        recipe.content.toLowerCase().includes(search.toLowerCase())
+    )
+    : recipes;
 
   return (
     <div>
@@ -35,12 +67,11 @@ export function Recetario() {
         <input
           type="text"
           value={search}
-          onChange={handleSearch}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={handleSearch}
           placeholder="Buscar recetas..."
         />
-        <button>
-          <img src="ruta" alt="Ícono de búsqueda" />
-        </button>
+        <button onClick={handleSearchButtonClick}>Buscar</button>
       </div>
       <div>
         {suggestions.map((suggestion) => (
@@ -49,9 +80,27 @@ export function Recetario() {
           </span>
         ))}
       </div>
+      <div>
+        <input
+          type="text"
+          value={newRecipeName}
+          onChange={(e) => setNewRecipeName(e.target.value)}
+          placeholder="Nombre de la receta"
+        />
+        <textarea
+          value={newRecipeContent}
+          onChange={(e) => setNewRecipeContent(e.target.value)}
+          placeholder="Contenido de la receta"
+        />
+        <button onClick={handleCreateRecipe}>Crear Receta</button>
+      </div>
       <ul>
         {filteredRecipes.map((recipe) => (
-          <li key={recipe.id}>{recipe.name}</li>
+          <li key={recipe.id}>
+            <strong>{recipe.name}</strong>: {recipe.content}
+            <button onClick={() => handleEditRecipe(recipe.id)}>Editar</button>
+            <button onClick={() => handleDeleteRecipe(recipe.id)}>Eliminar</button>
+          </li>
         ))}
       </ul>
     </div>
