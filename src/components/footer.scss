@@ -1,0 +1,11 @@
+@import "../sass/colors.scss";
+
+.footer {
+  border-top: solid 0.1rem;
+  border-color: $color-grey-disabled;
+  background-color: $color-white-creamy;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}

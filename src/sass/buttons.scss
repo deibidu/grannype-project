@@ -1,3 +1,6 @@
+@import "./colors.scss";
+@import "./fonts.scss";
+
 /*
 html {
     <button class="button__primary-COLOR">
@@ -6,15 +9,13 @@ html {
     </button>
 }
 */
-
 /*Botón primario: relleno de un color main con tipografía en $color-white-creamy*/
-
 .button__primary-orange {
   display: inline-flex;
   align-items: center;
   background-color: $color-orange-neon;
   color: $color-white-creamy;
-  font-family: "Futura Medium Bt";
+  font-family: $font-weight-semibold;
   padding: 16px 20px;
   border: none;
   border-radius: 8px;
@@ -27,7 +28,7 @@ html {
   align-items: center;
   background-color: $color-green-lettuce;
   color: $color-white-creamy;
-  font-family: "Futura Medium Bt";
+  font-family: $font-weight-semibold;
   padding: 16px 20px;
   border: none;
   border-radius: 8px;
@@ -40,7 +41,7 @@ html {
   align-items: center;
   background-color: $color-yellow-mustard;
   color: $color-white-creamy;
-  font-family: "Futura Medium Bt";
+  font-family: $font-weight-semibold;
   padding: 16px 20px;
   border: none;
   border-radius: 8px;
@@ -53,7 +54,7 @@ html {
   align-items: center;
   background-color: $color-blue-vinyl;
   color: $color-white-creamy;
-  font-family: "Futura Medium Bt";
+  font-family: $font-weight-semibold;
   padding: 16px 20px;
   border: none;
   border-radius: 8px;
@@ -66,7 +67,7 @@ html {
   align-items: center;
   background-color: $color-pink-bubblegum;
   color: $color-white-creamy;
-  font-family: "Futura Medium Bt";
+  font-family: $font-weight-semibold;
   padding: 16px 20px;
   border: none;
   border-radius: 8px;

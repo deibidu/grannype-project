@@ -7,15 +7,15 @@ $color-pink-bubblegum: #dc5f7d;
 $color-yellow-mustard: #fad314;
 $color-grey-disabled: #e3e3e3;
 $color-black-the-darkness: #000000;
-$color-grey-dust: #4B4B4B;
+$color-grey-dust: #4b4b4b;
 
 /*Uso de las variables de colores*/
 
 $main-theme-color: $color-green-lettuce;
 $main-theme-menu: $color-orange-neon;
-$color-theme-recetario: $color-green-lettuce;
+$color-theme-recipe: $color-green-lettuce;
 $color-theme-crear: $color-yellow-mustard;
-$color-theme-calendario: $color-blue-vinyl;
+$color-theme-calendar: $color-blue-vinyl;
 $color-theme-compra: $color-pink-bubblegum;
 
 /*Las variables de colores en CSS
@@ -32,7 +32,7 @@ $color-theme-compra: $color-pink-bubblegum;
 
 --main-theme-color: --color-green-lettuce;
 --main-theme-menu: --color-orange-neon;
---color-theme-recetario: --color-green-lettuce;
+--color-theme-recipe: --color-green-lettuce;
 --color-theme-crear: --color-yellow-mustard;
---color-theme-calendario: --color-blue-vynil;
+--color-theme-calendar: --color-blue-vynil;
 --color-theme-compra: --color-pink-bubblegum;*/

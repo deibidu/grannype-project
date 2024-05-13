@@ -1,3 +1,3 @@
 export const Home = () => {
-  return <h1>Tus recetas te están esperando</h1>;
+  return <h1 className={'font-title'}>Tus recetas te están esperando</h1>;
 };

@@ -1,33 +1,38 @@
-import { createBrowserRouter } from "react-router-dom";
-import { App } from "./App.tsx";
-import { ListaCompra } from "./pages/lista-de-compras.tsx";
-import { Calendario } from "./pages/calendario.tsx";
-import { Recetario } from "./pages/recetario.tsx";
-import { Home } from "./pages/Home.tsx";
+import { createBrowserRouter } from 'react-router-dom';
+import { App } from './App.tsx';
+import { ShoppingList } from './pages/ShoppingList.tsx';
+import { Calendar } from './pages/Calendar.tsx';
+import { CreateRecipe } from './pages/CreateRecipe.tsx';
+import { Recipes } from './pages/Recipes.tsx';
+import { Home } from './pages/Home.tsx';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/recetario",
-        element: <Recetario />,
+        path: '/Recipes',
+        element: <Recipes />,
       },
       {
-        path: "/calendario",
-        element: <Calendario />,
+        path: '/CreateRecipe',
+        element: <CreateRecipe />,
       },
       {
-        path: "/lista-de-compras",
-        element: <ListaCompra />,
+        path: '/Calendar',
+        element: <Calendar />,
       },
       {
-        path: "/patterns.tsx",
+        path: '/ShoppingList',
+        element: <ShoppingList />,
+      },
+      {
+        path: '/patterns.tsx',
         element: <div>Patterns</div>,
       },
     ],

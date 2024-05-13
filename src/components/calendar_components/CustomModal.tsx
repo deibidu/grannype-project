@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Modal from "react-modal";
-import { EventInput } from "@fullcalendar/core/index.js";
+import React, { useState, useEffect } from 'react';
+import Modal from 'react-modal';
+import { EventInput } from '@fullcalendar/core/index.js';
+import '../../pages/Calendar.scss';
 
 interface AddEventModalProps {
   isOpen: boolean;
@@ -10,18 +11,12 @@ interface AddEventModalProps {
   selectedEvent: EventInput | null;
 }
 
-export function AddEventModal({
-  isOpen,
-  onClose,
-  onAddEvent,
-  onDeleteEvent,
-  selectedEvent,
-}: AddEventModalProps) {
-  const [title, setTitle] = useState<string>("");
+export function AddEventModal({ isOpen, onClose, onAddEvent, onDeleteEvent, selectedEvent }: AddEventModalProps) {
+  const [title, setTitle] = useState<string>('');
 
   useEffect(() => {
     if (selectedEvent) {
-      setTitle(selectedEvent.title || "");
+      setTitle(selectedEvent.title || '');
     }
   }, [selectedEvent]);
 
@@ -29,7 +24,7 @@ export function AddEventModal({
     e.preventDefault();
 
     if (!title) {
-      alert("Por favor ingrese el título del evento");
+      alert('Please insert your meal');
       return;
     }
 
@@ -46,28 +41,23 @@ export function AddEventModal({
   };
 
   const handleCloseModal = () => {
-    setTitle("");
+    setTitle('');
     onClose();
   };
 
   return (
     <Modal isOpen={isOpen} onRequestClose={handleCloseModal}>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Título del Evento"
-        />
+        <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Meal Title" />
         <div>
-          <button type="submit">Aceptar</button>
+          <button type="submit">Accept</button>
           {selectedEvent && (
             <button type="button" onClick={handleDelete}>
-              Eliminar
+              Delete
             </button>
           )}
           <button type="button" onClick={handleCloseModal}>
-            Cancelar
+            Cancel
           </button>
         </div>
       </form>

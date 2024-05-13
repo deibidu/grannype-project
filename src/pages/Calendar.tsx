@@ -1,11 +1,11 @@
-import { useState } from "react";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin from "@fullcalendar/interaction";
-import { AddEventModal } from "../components/calendar_components/CustomModal";
-import { EventInput } from "@fullcalendar/core/index.js";
+import { useState } from 'react';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { AddEventModal } from '../components/calendar_components/CustomModal';
+import { EventInput } from '@fullcalendar/core/index.js';
 
-export function Calendario() {
+export function Calendar() {
   const [isOpen, setIsOpen] = useState(false);
   const [events, setEvents] = useState<EventInput[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<EventInput | null>(null);
@@ -26,18 +26,16 @@ export function Calendario() {
 
   const handleModalSubmit = (newTitle: string) => {
     if (selectedEvent) {
-      // Editar evento existente
-      const updatedEvents = events.map((event) =>
-        event === selectedEvent ? { ...event, title: newTitle } : event
-      );
+      // Editar titulo menu existente
+      const updatedEvents = events.map(event => (event === selectedEvent ? { ...event, title: newTitle } : event));
       setEvents(updatedEvents);
     } else {
-      // Añadir nuevo evento
+      // Añadir nuevo menu
       const newEvent: EventInput = {
         title: newTitle,
-        start: new Date().toISOString(), // Ejemplo: fecha actual
+        start: new Date().toISOString(), // Ejemplo de la fecha actual
       };
-      setEvents((prevEvents) => [...prevEvents, newEvent]);
+      setEvents(prevEvents => [...prevEvents, newEvent]);
     }
     handleModalClose();
   };
@@ -47,7 +45,7 @@ export function Calendario() {
       // Verificar que el evento seleccionado sea válido
       const eventToRemove = selectedEvent.event;
       if (eventToRemove) {
-        // Remover el evento del calendario
+        // Borrar el evento del calendario
         eventToRemove.remove();
         // Cerrar el modal
         handleModalClose();
@@ -60,7 +58,7 @@ export function Calendario() {
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
-        locale="es"
+        locale="en"
         height={800}
         events={events}
         selectable={true}

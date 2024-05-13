@@ -1,9 +1,29 @@
 @import "colors";
+@import "fonts";
 
 html {
   background-color: $color-white-creamy;
+  background-image: url(../assets/images/icons-bg.png);
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $color-grey-dust;
 }
 
 ul {
   list-style: none;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: $color-white-creamy;
 }

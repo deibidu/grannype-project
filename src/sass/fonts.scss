@@ -1,0 +1,20 @@
+$font-title: "Rammetto One", sans-serif;
+$font-text: "Jost", sans-serif;
+
+//peso
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+
+.font-text-regular {
+  font-family: $font-text;
+  font-weight: $font-weight-regular;
+}
+
+.font-text-semibold {
+  font-family: $font-text;
+  font-weight: $font-weight-semibold;
+}
+
+.font-title {
+  font-family: $font-title;
+}
