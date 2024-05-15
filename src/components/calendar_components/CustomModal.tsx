@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { EventInput } from '@fullcalendar/core/index.js';
 import '../../pages/Calendar.scss';
+import '../../sass/fonts.scss';
 
 interface AddEventModalProps {
   isOpen: boolean;
@@ -46,17 +47,28 @@ export function AddEventModal({ isOpen, onClose, onAddEvent, onDeleteEvent, sele
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={handleCloseModal}>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Meal Title" />
-        <div>
-          <button type="submit">Accept</button>
+    <Modal className={'modal modal-Calendar'} isOpen={isOpen} onRequestClose={handleCloseModal}>
+      <div className="modal-header">
+        <h3>Add Meal</h3>
+      </div>
+      <form className={'modal-content'} onSubmit={handleSubmit}>
+        <input
+          className="input-modal"
+          type="text"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          placeholder="Meal Title"
+        />
+        <div className="modal-btn-div">
+          <button className="button__primary-blue" type="submit">
+            Accept
+          </button>
           {selectedEvent && (
-            <button type="button" onClick={handleDelete}>
+            <button className="button__primary-blue" type="button" onClick={handleDelete}>
               Delete
             </button>
           )}
-          <button type="button" onClick={handleCloseModal}>
+          <button className="button__primary-blue" type="button" onClick={handleCloseModal}>
             Cancel
           </button>
         </div>

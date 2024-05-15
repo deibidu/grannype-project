@@ -1,6 +1,6 @@
 import React from 'react';
 import LogoImage from '../assets/images/Logo_Grannype.svg';
-import UserIconCreamy from '../assets/images/User_Icon_Creamy.svg';
+import UserIconCreamy from '../assets/images/profile_icon__creamy.svg';
 import '../sass/headers.scss';
 import '../sass/fonts.scss';
 

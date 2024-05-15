@@ -1,3 +1,5 @@
+@import "./colors.scss";
+
 $font-title: "Rammetto One", sans-serif;
 $font-text: "Jost", sans-serif;
 
@@ -17,4 +19,10 @@ $font-weight-semibold: 600;
 
 .font-title {
   font-family: $font-title;
+}
+
+.font-title-sections {
+  font-family: $font-title;
+  color: $color-grey-dust;
+  padding: 1rem 1rem 0 2rem;
 }

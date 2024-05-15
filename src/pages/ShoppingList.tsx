@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../sass/colors.scss';
-import '../sass/fonts.scss';
+import './ShoppingList.scss';
+import '../sass/buttons.scss';
 
 export function ShoppingList() {
   const [items, setItems] = useState<{ id: string; value: string; checked: boolean }[]>([]);
@@ -23,28 +23,48 @@ export function ShoppingList() {
 
   return (
     <>
-      <div>
-        <h1 className="font-title">Shopping List</h1>
-        <ul>
-          {items.map(item => (
-            <li
-              key={item.id}
-              style={{
-                textDecorationLine: item.checked ? 'line-through' : 'none',
-              }}
-            >
-              <input type="checkbox" checked={item.checked} onChange={() => handleOnChange(item.id)} />
+      <h1 className="font-title-sections ">What doy you need from the store?</h1>
+      <div className="shoppingList">
+        <div className="shoppingListContainer ">
+          <div>
+            <h2 className="font-title"> Your shopping list</h2>
+          </div>
 
-              {item.value}
-              <button onClick={() => handleRemove(item.id)}>-</button>
-            </li>
-          ))}
-        </ul>
+          <ul>
+            {items.map(item => (
+              <li
+                className="font-text"
+                key={item.id}
+                style={{
+                  textDecorationLine: item.checked ? 'line-through' : 'none',
+                }}
+              >
+                <input
+                  className="button__secondary-pink"
+                  type="checkbox"
+                  checked={item.checked}
+                  onChange={() => handleOnChange(item.id)}
+                />
 
-        <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} />
-        <button type="submit" onClick={addItem}>
-          +
-        </button>
+                {item.value}
+                <button className="button__secondary-pink" onClick={() => handleRemove(item.id)}>
+                  -
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div className="insertItem">
+            <input
+              type="text"
+              className="inputShoppingListContainer"
+              value={inputValue}
+              onChange={e => setInputValue(e.target.value)}
+            />
+            <button className="button__primary-pink" type="submit" onClick={addItem}>
+              +
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -1,0 +1,36 @@
+@import "../sass/colors.scss";
+@import "../sass/fonts.scss";
+
+.shoppingList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 8rem;
+}
+
+.shoppingListContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-white-creamy;
+  row-gap: 4rem;
+  padding: 10px;
+  border: 0.1rem solid $color-pink-bubblegum;
+  border-radius: 10px;
+}
+
+.inputShoppingListContainer {
+  padding: 20px 50px;
+  background-color: $color-white-creamy;
+  border: solid 1px;
+  border-radius: 2px;
+  border-color: $color-pink-bubblegum;
+}
+
+.insertItem {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
