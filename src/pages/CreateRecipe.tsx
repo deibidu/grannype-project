@@ -3,7 +3,7 @@ import './CreateRecipe.scss';
 
 export function CreateRecipe() {
   const [recipeBuilder, setRecipeBuilder] = useState<
-    { id: number; title: string; input: string; value: string; image?: string }[]
+    { id: string; title: string; ingredients: string[]; steps: string; notes: string; image?: string }[]
   >([]);
 
   //   const userContext = React.createContext();
@@ -42,16 +42,17 @@ export function CreateRecipe() {
           <h3>Preparation</h3>
         </div>
         <div className="cr-steps">
-          <input className="cr-steps__input" placeholder="Introduce the steps"></input>
+          <textarea className="cr-steps__input" placeholder="Introduce the steps"></textarea>
         </div>
       </div>
 
-      <div className="createrecipe-notes" placeholder="Any notes?"></div>
-      <div className="cr-notes__title">
-        <h3>Notes</h3>
-      </div>
-      <div className="cr-notes">
-        <input className="cr-notes__input" placeholder="Any notes?"></input>
+      <div className="createrecipe-notes">
+        <div className="cr-notes__title">
+          <h3>Notes</h3>
+        </div>
+        <div className="cr-notes">
+          <textarea className="cr-notes__input" placeholder="Any notes?"></textarea>
+        </div>
       </div>
     </>
   );

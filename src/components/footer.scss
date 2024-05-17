@@ -1,6 +1,7 @@
 @import "../sass/colors.scss";
 
 .footer {
+  display: block;
   border-top: solid 0.1rem;
   border-color: $color-grey-disabled;
   background-color: $color-white-creamy;
@@ -12,9 +13,11 @@
 .sticky-footer {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   margin: 0;
 }
 
 .main {
   flex: 1;
+  padding: 2rem;
 }

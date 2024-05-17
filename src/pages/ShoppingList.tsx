@@ -23,17 +23,17 @@ export function ShoppingList() {
 
   return (
     <>
-      <h1 className="font-title-sections ">What doy you need from the store?</h1>
+      <h1 className="font-title-sections ">What do you need from the store?</h1>
       <div className="shoppingList">
         <div className="shoppingListContainer ">
-          <div>
-            <h2 className="font-title"> Your shopping list</h2>
+          <div className="Shoppinglist_title">
+            <h3 className="font-title"> Your shopping list</h3>
           </div>
 
           <ul>
             {items.map(item => (
               <li
-                className="font-text"
+                className="shoppingList-li"
                 key={item.id}
                 style={{
                   textDecorationLine: item.checked ? 'line-through' : 'none',
