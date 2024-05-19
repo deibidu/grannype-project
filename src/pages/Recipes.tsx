@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import '../sass/colors.scss';
 import '../sass/fonts.scss';
+import searchIcon from '../assets/images/search_icon_green.svg';
 
 export function Recipes() {
   const [search, setSearch] = useState('');
   const [suggestions, setSuggestions] = useState(['Aceite', 'Cebolla', 'Patata', 'Arroz', 'Huevo', 'Garbanzos']);
-
+  const [showSearch, setShowSearch] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [newRecipeName, setNewRecipeName] = useState('');
   const [newRecipeContent, setNewRecipeContent] = useState('');
@@ -44,7 +45,6 @@ export function Recipes() {
     setRecipes(updatedRecipes);
   }
 
-  // Filtra las recetas según el término de búsqueda
   const filteredRecipes = search
     ? recipes.filter(
       recipe =>
@@ -54,26 +54,33 @@ export function Recipes() {
     : recipes;
 
   return (
-    <div>
+    <div className="recipes-container">
       <h1 className="font-title">Your Recipes</h1>
-      <div>
-        <input
-          type="text"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          onKeyDown={handleSearch}
-          placeholder="Search your recipes..."
+      <div className="search-bar">
+        <img
+          src={searchIcon}
+          alt="Search"
+          className="search-icon"
+          onClick={() => setShowSearch(!showSearch)}
         />
-        <button onClick={handleSearchButtonClick}>Search</button>
+        {showSearch && (
+          <input
+            type="text"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            onKeyDown={handleSearch}
+            placeholder="Search your recipes..."
+          />
+        )}
       </div>
-      <div>
+      <div className="suggestions">
         {suggestions.map(suggestion => (
-          <span key={suggestion} onClick={() => handleSuggestClick(suggestion)}>
+          <span key={suggestion} className="suggestion" onClick={() => handleSuggestClick(suggestion)}>
             {suggestion}
           </span>
         ))}
       </div>
-      <div>
+      <div className="new-recipe-form">
         <input
           type="text"
           value={newRecipeName}
@@ -83,11 +90,11 @@ export function Recipes() {
         <textarea
           value={newRecipeContent}
           onChange={e => setNewRecipeContent(e.target.value)}
-          placeholder="Recipe containt"
+          placeholder="Recipe content"
         />
         <button onClick={handleCreateRecipe}>Create Recipe</button>
       </div>
-      <ul>
+      <ul className="recipe-list">
         {filteredRecipes.map(recipe => (
           <li key={recipe.id}>
             <strong>{recipe.name}</strong>: {recipe.content}
