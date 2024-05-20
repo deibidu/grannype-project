@@ -18,40 +18,42 @@ export function CreateRecipe() {
 
   return (
     <>
-      <div className="createrecipe-inputMealTitle">
-        <input placeholder="Your meal title"></input>
-      </div>
-
-      <div className="createrecipe-ingedientsAndImage">
-        <div className="cr-image"></div>
-
-        <div className="cr-ingredients">
-          <div className="cr-ingredients__title">
-            <h3>Ingredients</h3>
-          </div>
-          <div className="cr-ingredients__list">
-            <ul>
-              <li></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div className="createrecipe-preparation">
+      <div className="CreateRecipe">
         <div>
-          <h3>Preparation</h3>
+          <input className="createrecipe-inputMealTitle" placeholder="Your meal title"></input>
         </div>
-        <div className="cr-steps">
-          <textarea className="cr-steps__input" placeholder="Introduce the steps"></textarea>
-        </div>
-      </div>
 
-      <div className="createrecipe-notes">
-        <div className="cr-notes__title">
-          <h3>Notes</h3>
+        <div className="createrecipe-ingedientsAndImage">
+          <div className="cr-image"></div>
+
+          <div className="cr-ingredients">
+            <div className="cr-ingredients__title">
+              <h3>Ingredients</h3>
+            </div>
+            <div className="cr-ingredients__list">
+              <ul>
+                <li></li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="cr-notes">
-          <textarea className="cr-notes__input" placeholder="Any notes?"></textarea>
+
+        <div className="createrecipe-preparation">
+          <div>
+            <h3>Preparation</h3>
+          </div>
+          <div className="cr-steps">
+            <textarea className="cr-steps__input" placeholder="Introduce the steps"></textarea>
+          </div>
+        </div>
+
+        <div className="createrecipe-notes">
+          <div className="cr-notes__title">
+            <h3>Notes</h3>
+          </div>
+          <div className="cr-notes">
+            <textarea className="cr-notes__input" placeholder="Any notes?"></textarea>
+          </div>
         </div>
       </div>
     </>

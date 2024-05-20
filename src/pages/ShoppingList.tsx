@@ -47,7 +47,7 @@ export function ShoppingList() {
                 />
 
                 {item.value}
-                <button className="button__secondary-pink" onClick={() => handleRemove(item.id)}>
+                <button className="delete_btn button__secondary-pink" onClick={() => handleRemove(item.id)}>
                   -
                 </button>
               </li>
