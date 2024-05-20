@@ -37,7 +37,7 @@ export function Recipes() {
     }
   }
 
-  function handleEditRecipe(id) { }
+  function handleEditRecipe(id) {}
 
   function handleDeleteRecipe(id) {
     const updatedRecipes = recipes.filter(recipe => recipe.id !== id);
@@ -47,10 +47,10 @@ export function Recipes() {
   // Filtra las recetas según el término de búsqueda
   const filteredRecipes = search
     ? recipes.filter(
-      recipe =>
-        recipe.name.toLowerCase().includes(search.toLowerCase()) ||
-        recipe.content.toLowerCase().includes(search.toLowerCase()),
-    )
+        recipe =>
+          recipe.name.toLowerCase().includes(search.toLowerCase()) ||
+          recipe.content.toLowerCase().includes(search.toLowerCase()),
+      )
     : recipes;
 
   return (
