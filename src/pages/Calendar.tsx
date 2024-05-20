@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { AddEventModal } from '../components/calendar_components/CustomModal';
 import { EventInput } from '@fullcalendar/core/index.js';
+import './Calendar.scss';
 
 export function Calendar() {
   const [isOpen, setIsOpen] = useState(false);

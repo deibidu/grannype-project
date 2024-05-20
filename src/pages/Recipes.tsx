@@ -55,7 +55,7 @@ export function Recipes() {
 
   return (
     <div>
-      <h1 className="font-title">Your Recipes</h1>
+      <h1 className="font-title-sections">Your Recipes</h1>
       <div>
         <input
           type="text"

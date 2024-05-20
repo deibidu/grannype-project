@@ -1,13 +1,13 @@
-import React from "react";
-import { Header } from "../components/header";
-import { Footer } from "../components/footer";
-import { Outlet } from "react-router-dom";
+import React from 'react';
+import { Header } from '../components/header';
+import { Footer } from '../components/footer';
+import { Outlet } from 'react-router-dom';
 
 const MainWrapper = (): React.ReactNode => {
   return (
     <div className="card">
       <Header></Header>
-      <div>
+      <div className={'main'}>
         <Outlet />
       </div>
       <Footer></Footer>

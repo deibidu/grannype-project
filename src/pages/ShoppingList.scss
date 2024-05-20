@@ -1,0 +1,59 @@
+@import "../sass/colors.scss";
+@import "../sass/fonts.scss";
+
+.shoppingList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 12px;
+}
+.Shoppinglist_title {
+  background-color: $color-pink-bubblegum;
+  border: solid 1px $color-pink-bubblegum;
+  padding: 12px 45px;
+  border-radius: 12px 12px 0 0;
+  font-family: $font-title;
+  color: $color-white-creamy;
+  width: 100%;
+}
+
+.shoppingListContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-white-creamy;
+  row-gap: 4rem;
+  padding: 12px 45px;
+  padding-top: 0;
+  border: 1px solid $color-grey-disabled;
+  border-radius: 10px;
+}
+
+.inputShoppingListContainer {
+  padding: 16px 20px;
+  background-color: $color-white-creamy;
+  border: solid 1px;
+  border-radius: 8px 0 0 8px;
+  border-color: $color-pink-bubblegum;
+}
+
+.insertItem {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.shoppingList-li {
+  font-family: $font-text;
+  padding: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.delete_btn {
+  margin-left: 10px;
+}

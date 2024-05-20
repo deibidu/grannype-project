@@ -1,63 +1,63 @@
 /* Ambas partes del header tienen el mismo css. está divido en el common header, que es el gris. Y por otro lado, el sectionheader, que es el que varía dependiendo de la sección en la que te encuentras*/
 
 .common-header {
-    height: 60px;
-    background-color: #4B4B4B;
-    display: flex;
-    align-items: center;
-    padding: 0 36px;
-    justify-content: space-between;
+  height: 60px;
+  background-color: #4b4b4b;
+  display: flex;
+  align-items: center;
+  padding: 0 36px;
+  justify-content: space-between;
 }
-  
+
 .logo {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
-  
+
 .logo-container {
-    padding-right: 36px;
+  padding-right: 36px;
 }
-  
+
 .user-container {
-    padding-right: 36px;
-    display: flex;
-    align-items: center;
-    font-family: Arial;
+  padding-right: 36px;
+  display: flex;
+  align-items: center;
+  font-family: Arial;
 }
-  
+
 .user-container p {
-    margin: 0;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
 }
-  
+
 .user-icon {
-    width: 24px;
-    height: 24px;
-    margin-left: 25px;
+  width: 40px;
+  height: 40px;
+  margin-left: 25px;
 }
-  
+
 .section-header {
-    display: flex;
-    height: 72px;
+  display: flex;
+  height: 72px;
 }
-  
+
 .container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #4B4B4B;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4b4b4b;
 }
-  
+
 .icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
-  
+
 .section-name {
-    margin: 0;
-    font-size: 16px;
-    font-family: x;
+  margin: 0;
+  font-size: 16px;
+  font-family: x;
 }
