@@ -2,8 +2,7 @@ import React, { useState, useContext } from 'react';
 import './CreateRecipe.scss';
 
 export function CreateRecipe() {
-  /*<<<<<<< HEAD
-=======
+  /*
   const [recipeBuilder, setRecipeBuilder] = useState<
     { id: string; title: string; ingredients: string[]; steps: string; notes: string; image?: string }[]
   >([]);
@@ -61,7 +60,7 @@ export function CreateRecipe() {
     </>
   );
 }
->>>>>>> feature/customize */
+ */
 
   const [recipes, setRecipes] = useState([]);
   const [newRecipeName, setNewRecipeName] = useState('');
