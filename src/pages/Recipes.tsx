@@ -56,26 +56,10 @@ export function Recipes() {
     : recipes;
 
   return (
-    <div>
-      <h1 className="font-title-sections">Your Recipes</h1>
-      <div>
-        <input
-          type="text"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          onKeyDown={handleSearch}
-          placeholder="Search your recipes..."
-        />
-        <button onClick={handleSearchButtonClick}>Search</button>
     <div className="recipes-container">
       <h1 className="font-title">Your Recipes</h1>
       <div className="search-bar">
-        <img
-          src={searchIcon}
-          alt="Search"
-          className="search-icon"
-          onClick={() => setShowSearch(!showSearch)}
-        />
+        <img src={searchIcon} alt="Search" className="search-icon" onClick={() => setShowSearch(!showSearch)} />
         {showSearch && (
           <input
             type="text"
