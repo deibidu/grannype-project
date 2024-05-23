@@ -5,10 +5,7 @@ import './sass/fonts.scss';
 import './sass/buttons.scss';
 import { Header } from './components/header';
 import { Footer } from './components/footer';
-import { ShoppingList } from './pages/ShoppingList';
-import { Calendar } from './pages/Calendar';
-import { Recipes } from './pages/Recipes';
-import { CreateRecipe } from '.pages/CreateRecipe';
+import NavHeader from './components/headers/NavHeader';
 
 export const App = () => {
   return (
@@ -31,6 +28,7 @@ export const App = () => {
           Shopping List
         </NavLink>
       </div>
+      <NavHeader></NavHeader><NavHeader />
       <div>
         <Outlet />
       </div>

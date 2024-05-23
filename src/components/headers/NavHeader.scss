@@ -1,0 +1,81 @@
+.section-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+
+  .orange-nav,
+  .green-nav,
+  .yellow-nav,
+  .blue-nav,
+  .pink-nav {
+    padding: 10px 20px;
+    text-align: center;
+    color: #4aaf73;
+    border-bottom: 3px solid transparent;
+    transition: background-color 0.3s, border-bottom 0.3s;
+
+    &--active {
+      color: #fdfbf5;
+    }
+  }
+
+  .orange-nav {
+    background-color: #ff683f;
+
+    &--active {
+      background-color: #ff683f;
+      color: #fdfbf5;
+    }
+  }
+
+  .green-nav {
+    background-color: #4aaf73;
+
+    &--active {
+      background-color: #4aaf73;
+      border-bottom: 3px solid #4aaf73;
+    }
+  }
+
+  .yellow-nav {
+    background-color: #fdfbf5;
+    border-bottom: 3px solid #ffd700;
+
+    &--active {
+      background-color: #ffd700;
+      color: #fdfbf5;
+    }
+  }
+
+  .blue-nav {
+    background-color: #fdfbf5;
+    border-bottom: 3px solid #3e86c1;
+
+    &--active {
+      background-color: #3e86c1;
+      color: #fdfbf5;
+    }
+  }
+
+  .pink-nav {
+    background-color: #fdfbf5;
+    border-bottom: 3px solid #dc5f7d;
+
+    &--active {
+      background-color: #dc5f7d;
+      color: #fdfbf5;
+    }
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0 auto 5px;
+  }
+
+  .section-name {
+    font-size: 14px;
+  }
+}
