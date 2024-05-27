@@ -1,8 +1,9 @@
-/* Ambas partes del header tienen el mismo css. Está divido en el common header, que es el gris. Y por otro lado, los nav crelacinoado con su className active en el archivo de NavHeader.tsx*/
+/* Header común superior gris*/
+@import "../sass/colors.scss";
 
 .common-header {
   height: 60px;
-  background-color: #4b4b4b;
+  background-color: $color-grey-dust;
   display: flex;
   align-items: center;
   padding: 0 36px;
@@ -27,7 +28,7 @@
 
 .user-container p {
   margin: 0;
-  color: #fdfbf5;
+  color: $color-white-creamy;
   font-size: 16px;
   font-weight: bold;
 }

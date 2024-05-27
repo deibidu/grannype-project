@@ -1,70 +1,94 @@
+@import "../../sass/fonts.scss";
+@import "../../sass/colors.scss";
+
 .section-header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 10px 0;
+  padding: 0;
+  width: 100%;
+  font-family: $font-text;
 
-  .orange-nav,
-  .green-nav,
-  .yellow-nav,
-  .blue-nav,
-  .pink-nav {
-    padding: 10px 20px;
+  .nav-link {
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: #4aaf73;
+    color: $color-grey-dust;
     border-bottom: 3px solid transparent;
+    padding: 0;
     transition: background-color 0.3s, border-bottom 0.3s;
 
     &--active {
-      color: #fdfbf5;
+      color: $color-white-creamy;
+
+      .icon {
+        width: 30px;
+        height: 30px;
+        display: block;
+        margin: 0 auto 5px;
+      }
+
+      .icon--active {
+        fill: $color-white-creamy;
+      }
+
+      .section-name {
+        font-size: 14px;
+      }
     }
   }
 
   .orange-nav {
-    background-color: #ff683f;
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-orange-neon;
 
     &--active {
-      background-color: #ff683f;
-      color: #fdfbf5;
+      background-color: $color-orange-neon;
+      color: $color-white-creamy;
     }
   }
 
   .green-nav {
-    background-color: #4aaf73;
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-green-lettuce;
 
     &--active {
-      background-color: #4aaf73;
-      border-bottom: 3px solid #4aaf73;
+      background-color: $color-green-lettuce;
+      color: $color-white-creamy;
     }
   }
 
   .yellow-nav {
-    background-color: #fdfbf5;
-    border-bottom: 3px solid #ffd700;
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-yellow-mustard;
 
     &--active {
-      background-color: #ffd700;
-      color: #fdfbf5;
+      background-color: $color-yellow-mustard;
+      color: $color-white-creamy;
     }
   }
 
   .blue-nav {
-    background-color: #fdfbf5;
-    border-bottom: 3px solid #3e86c1;
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-blue-vinyl;
 
     &--active {
-      background-color: #3e86c1;
-      color: #fdfbf5;
+      background-color: $color-blue-vinyl;
+      color: $color-white-creamy;
     }
   }
 
   .pink-nav {
-    background-color: #fdfbf5;
-    border-bottom: 3px solid #dc5f7d;
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-pink-bubblegum;
 
     &--active {
-      background-color: #dc5f7d;
-      color: #fdfbf5;
+      background-color: $color-pink-bubblegum;
+      color: $color-white-creamy;
     }
   }
 
