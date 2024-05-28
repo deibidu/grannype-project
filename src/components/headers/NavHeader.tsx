@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './NavHeader.scss';
-import MenuIconGrey from '../../assets/images/Menu_Icon_Creamy.svg';
+import MenuIconGrey from '../../assets/images/Menu_Icon_Grey.svg';
 import RecipeIconGrey from '../../assets/images/Recetario_Icon_Grey.svg';
 import CreateRecipeIconGrey from '../../assets/images/Crear_Icon_Grey.svg';
 import CalendarIconGrey from '../../assets/images/Calendar_Icon_Grey.svg';
@@ -11,7 +11,7 @@ function NavHeader() {
     return (
         <div className="section-header">
             <NavLink to="/" className={({ isActive }) => (`nav-link orange-nav ${isActive ? 'orange-nav--active' : ''}`)}>
-                <img src={MenuIconGrey} alt="MenuIconGrey" className="icon" />
+                <img src={MenuIconGrey} alt="MenuIconGrey" className={`icon ${isActive ? 'icon--active' : ''}`} />
                 <p className="section-name">Menú</p>
             </NavLink>
 
