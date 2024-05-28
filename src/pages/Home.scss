@@ -1,13 +1,20 @@
 @import "../sass/colors.scss";
 @import "../sass/fonts.scss";
 
+.widgets-Home {
+  display: block;
+  margin: auto;
+  padding: 32px;
+}
+
 .Home_widgetCard {
   display: flex;
   flex-direction: column;
   border: solid 2px $color-grey-disabled;
-  margin: 2rem;
   border-radius: 16px;
   background-color: $color-white-creamy;
+  width: 100%;
+  row-gap: 16px;
 }
 
 .Home_widgetTitle {
@@ -30,4 +37,5 @@
   justify-content: space-between;
   flex-direction: row;
   align-content: center;
+  margin-top: 32px;
 }

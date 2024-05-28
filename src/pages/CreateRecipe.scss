@@ -1,34 +1,108 @@
-.CreateRecipe {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-block: auto;
-  gap: 10px;
-  border: solid 1px;
-  padding: 24px;
-}
+@import "../sass/colors.scss";
+@import "../sass/fonts.scss";
 
-.createrecipe-inputMealTitle,
-.cr-ingredients,
-.cr-image,
-.createrecipe-preparation,
-.createrecipe-notes {
-  display: flex;
-  flex-direction: column;
+.CreateRecipe {
   align-items: center;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 24px;
   border: solid 1px;
   border-radius: 4px;
+  box-sizing: border-box;
+  background-color: $color-white-creamy;
+}
+
+.createrecipe-inputMealTitle {
+  background-color: #ffffff00;
+}
+.cr-ingredients,
+.cr-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 12px 18px;
+  border: solid 1px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.createrecipe-title input {
+  width: 100%;
+  padding: 10px;
+  border: none;
 }
 
 .createrecipe-ingedientsAndImage {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.cr-ingredients__list {
+.cr-ingredients {
   display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 12px 18px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cr-image {
+  flex: 1;
+  padding: 12px 18px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.cr-image img {
+  width: 200px;
+  height: 200px;
+}
+
+.cr-selection-btns {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  padding: 32px;
+}
+
+.cr-ingredients__item {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  font-family: $font-text;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cr-ingredients__item input {
+  width: 100%;
+  box-sizing: border-box;
+}
+.createrecipe-inputMealTitle,
+.createrecipe-preparation,
+.createrecipe-notes {
+  align-items: center;
+  padding: 12px 18px;
+  border: solid 1px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cr-steps textarea,
+.cr-notes textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  resize: vertical;
+  padding: 10px;
+  min-height: 100px;
+  background-color: #ffffff00;
 }

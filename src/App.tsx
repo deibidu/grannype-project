@@ -9,6 +9,7 @@ import { ShoppingList } from './pages/ShoppingList';
 import { Calendar } from './pages/Calendar';
 import { Recipes } from './pages/Recipes';
 import { CreateRecipe } from '.pages/CreateRecipe';
+import { Home } from '.pages/Home';
 
 export const App = () => {
   return (

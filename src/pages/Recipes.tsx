@@ -57,7 +57,7 @@ export function Recipes() {
 
   return (
     <div className="recipes-container">
-      <h1 className="font-title">Your Recipes</h1>
+      <h1 className="font-title-sections">Your Recipes</h1>
       <div className="search-bar">
         <img src={searchIcon} alt="Search" className="search-icon" onClick={() => setShowSearch(!showSearch)} />
         {showSearch && (
