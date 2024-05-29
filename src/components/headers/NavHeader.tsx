@@ -11,7 +11,7 @@ function NavHeader() {
     return (
         <div className="section-header">
             <NavLink to="/" className={({ isActive }) => (`nav-link orange-nav ${isActive ? 'orange-nav--active' : ''}`)}>
-                <img src={MenuIconGrey} alt="MenuIconGrey" className={`icon ${isActive ? 'icon--active' : ''}`} />
+                <img src={MenuIconGrey} alt="MenuIconGrey" className="icon" />
                 <p className="section-name">Menú</p>
             </NavLink>
 
