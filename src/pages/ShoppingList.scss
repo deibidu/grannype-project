@@ -50,6 +50,12 @@
   padding: 5px;
 }
 
+.shoppingList-ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 input[type="checkbox"] {
   margin-right: 10px;
 }

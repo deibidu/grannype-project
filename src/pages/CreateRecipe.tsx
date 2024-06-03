@@ -5,6 +5,7 @@ import Toolbar from '../components/CreateRecipe_Toolbar/CreateRecipe_Toolbar';
 import { RiImageAddFill } from 'react-icons/ri';
 import './CreateRecipe.scss';
 import { Modal_IMG } from '../components/CreateRecipe_IMG__modal/CreateRecipe_IMG__modal';
+import useGoogleFonts from 'react-google-fonts';
 
 interface Recipe {
   title: string;
@@ -18,18 +19,37 @@ const RecipeContainer = styled.div<{
   backgroundColor: string;
   borderColor: string;
   fontColor: string;
-  fontFamily: string;
+  fontFamilyTitle: string;
+  fontFamilyText: string;
   fontSize: string;
 }>`
   background-color: ${props => props.backgroundColor};
-  border: 2px solid ${props => props.borderColor};
+  border: 3px solid ${props => props.borderColor};
   color: ${props => props.fontColor};
-  font-family: ${props => props.fontFamily};
+  font-family-title: ${props => props.fontFamilyTitle};
+  font-family-text: ${props => props.fontFamilyText};
   font-size: ${props => props.fontSize};
-  padding: 20px;
-  margin-top: 20px;
-  width: 500px;
-  margin: 0 auto;
+  padding: 24px;
+  margin: 40px auto;
+  width: 800px;
+  font-size: ${props => props.fontSize};
+  font-family: ${props => props.fontFamilyText};
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${props => props.fontFamilyTitle};
+  }
+`;
+
+const TitleFont = styled.h3<{ fontFamilyTitle: string }>`
+  font-family: ${props => props.fontFamilyTitle};
+`;
+
+const TextFont = styled.p<{ fontFamilyText: string }>`
+  font-family: ${props => props.fontFamilyText};
 `;
 
 export const CreateRecipe: React.FC = () => {
@@ -37,10 +57,11 @@ export const CreateRecipe: React.FC = () => {
   const [ingredients, setIngredients] = useState<string[]>([]);
 
   const [recipe, setRecipe] = useState<Recipe>({ title: '', image: '', ingredients: [''], steps: '', notes: '' });
-  const [backgroundColor, setBackgroundColor] = useState('#ffffff');
-  const [borderColor, setBorderColor] = useState('#000000');
-  const [fontColor, setFontColor] = useState('#000000');
-  const [fontFamily, setFontFamily] = useState('Jost, sans-serif');
+  const [backgroundColor, setBackgroundColor] = useState('#fdfbf5');
+  const [borderColor, setBorderColor] = useState('#4b4b4b');
+  const [fontColor, setFontColor] = useState('#4b4b4b');
+  const [currentFontFamilyTitle, setCurrentFontFamilyTitle] = useState('yesteryear, sans-serif');
+  const [currentFontFamilyText, setCurrentFontFamilyText] = useState('jost, sans-serif');
   const [fontSize, setFontSize] = useState('16px');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -110,23 +131,34 @@ export const CreateRecipe: React.FC = () => {
         backgroundColor={backgroundColor}
         borderColor={borderColor}
         fontColor={fontColor}
-        fontFamily={fontFamily}
         fontSize={fontSize}
+        fontFamilyTitle={currentFontFamilyTitle}
+        fontFamilyText={currentFontFamilyText}
         setBackgroundColor={setBackgroundColor}
         setBorderColor={setBorderColor}
         setFontColor={setFontColor}
-        setFontFamily={setFontFamily}
         setFontSize={setFontSize}
+        setFontFamilyTitle={setCurrentFontFamilyTitle}
+        setFontFamilyText={setCurrentFontFamilyText}
       />
-      <div className="CreateRecipe">
+      <RecipeContainer
+        backgroundColor={backgroundColor}
+        borderColor={borderColor}
+        fontColor={fontColor}
+        fontSize={fontSize}
+        fontFamilyTitle={currentFontFamilyTitle}
+        fontFamilyText={currentFontFamilyText}
+      >
         <div>
-          <input
-            className="createrecipe-inputMealTitle"
-            placeholder="Your meal title"
-            value={recipe.title}
-            onChange={handleInputChange}
-            name="title"
-          />
+          <TitleFont fontFamilyTitle={currentFontFamilyTitle}>
+            <input
+              className="createrecipe-inputMealTitle"
+              placeholder="Your meal title"
+              value={recipe.title}
+              onChange={handleInputChange}
+              name="title"
+            />
+          </TitleFont>
         </div>
 
         <div className="createrecipe-ingedientsAndImage">
@@ -144,13 +176,15 @@ export const CreateRecipe: React.FC = () => {
           </div>
           <div className="cr-ingredients">
             <div className="cr-ingredients__title">
-              <h3>Ingredients</h3>
+              <TitleFont fontFamilyTitle={currentFontFamilyTitle}>
+                <h3>Ingredients</h3>
+              </TitleFont>
             </div>
             <div className="cr-ingredients__list">
               <ul>
                 {items.map(item => (
                   <li className="cr-ingredients__item" key={item.id}>
-                    {item.value}
+                    <TextFont fontFamilyText={currentFontFamilyText}>{item.value}</TextFont>
                     <button className="button__secondary-grey delete_btn" onClick={() => handleRemove(item.id)}>
                       -
                     </button>
@@ -170,37 +204,46 @@ export const CreateRecipe: React.FC = () => {
 
         <div className="createrecipe-preparation">
           <div>
-            <h3>Preparation</h3>
+            <TitleFont fontFamilyTitle={currentFontFamilyTitle}>
+              <h3>Preparation</h3>
+            </TitleFont>
           </div>
           <div className="cr-steps">
-            <textarea
-              className="cr-steps__input"
-              placeholder="Introduce the steps"
-              value={recipe.steps}
-              onChange={handleInputChange}
-              name="steps"
-            />
+            <TextFont fontFamilyText={currentFontFamilyText}>
+              <textarea
+                className="cr-steps__input"
+                placeholder="Introduce the steps"
+                value={recipe.steps}
+                onChange={handleInputChange}
+                name="steps"
+                style={{ fontFamily: currentFontFamilyText }}
+              />
+            </TextFont>
           </div>
         </div>
-
         <div className="createrecipe-notes">
           <div className="cr-notes__title">
-            <h3>Notes</h3>
+            <TitleFont fontFamilyTitle={currentFontFamilyTitle}>
+              <h3>Notes</h3>
+            </TitleFont>
           </div>
           <div className="cr-notes">
-            <textarea
-              className="cr-notes__input"
-              placeholder="Any notes?"
-              value={recipe.notes}
-              onChange={handleInputChange}
-              name="notes"
-            />
+            <TextFont fontFamilyText={currentFontFamilyText}>
+              <textarea
+                className="cr-notes__input"
+                placeholder="Any notes?"
+                value={recipe.notes}
+                onChange={handleInputChange}
+                name="notes"
+                style={{ fontFamily: currentFontFamilyText }}
+              />
+            </TextFont>
           </div>
         </div>
-      </div>
+      </RecipeContainer>
       <div className="cr-selection-btns">
         <button className="button__secondary-green" type={'submit'}>
-          Download
+          Print
         </button>
         <button className="button__primary-green" type={'submit'}>
           Accept

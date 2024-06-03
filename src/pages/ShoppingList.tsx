@@ -3,13 +3,18 @@ import './ShoppingList.scss';
 import '../sass/buttons.scss';
 
 export function ShoppingList() {
-  const [items, setItems] = useState<{ id: string; value: string; checked: boolean }[]>([]);
+  const [items, setItems] = useState([
+    { id: '1', value: 'Tomate', checked: false },
+    { id: '2', value: 'Aceite', checked: false },
+    { id: '3', value: 'Patatas', checked: false },
+  ]);
+
   const [inputValue, setInputValue] = useState('');
 
   const addItem = () => {
     if (inputValue.trim()) {
       setItems([...items, { id: Date.now().toString(), value: inputValue, checked: false }]);
-      setInputValue(' ');
+      setInputValue('');
     }
   };
 
@@ -23,14 +28,14 @@ export function ShoppingList() {
 
   return (
     <>
-      <h1 className="font-title-sections ">What do you need from the store?</h1>
+      <h1 className="font-title-sections">What do you need from the store?</h1>
       <div className="shoppingList">
-        <div className="shoppingListContainer ">
+        <div className="shoppingListContainer">
           <div className="Shoppinglist_title">
-            <h3 className="font-title"> Your shopping list</h3>
+            <h3 className="font-title">Your shopping list</h3>
           </div>
 
-          <ul>
+          <ul className="shoppingList-ul">
             {items.map(item => (
               <li
                 className="shoppingList-li"
@@ -45,7 +50,6 @@ export function ShoppingList() {
                   checked={item.checked}
                   onChange={() => handleOnChange(item.id)}
                 />
-
                 {item.value}
                 <button className="delete_btn button__secondary-pink" onClick={() => handleRemove(item.id)}>
                   -
@@ -53,6 +57,7 @@ export function ShoppingList() {
               </li>
             ))}
           </ul>
+
           <div className="insertItem">
             <input
               type="text"
