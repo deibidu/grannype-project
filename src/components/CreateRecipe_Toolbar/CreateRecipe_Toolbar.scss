@@ -1,0 +1,25 @@
+@import "../../sass/colors.scss";
+.toolbar {
+  display: flex;
+  justify-content: center;
+  background-color: $color-yellow-mustard;
+  padding: 10px;
+  border-bottom: 1px solid $color-grey-disabled;
+}
+
+.toolbar-button {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: $color-grey-dust;
+  cursor: pointer;
+}
+
+.toolbar-button:hover {
+  background-color: $color-white-creamy;
+}
+
+.toolbar-button > svg {
+  margin-right: 10px;
+}

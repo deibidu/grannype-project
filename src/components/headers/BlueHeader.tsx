@@ -9,6 +9,7 @@ function BlueHeader() {
           <div className="common-header">
             <div className="logo-container">
               <img src="../assets/images/Logo_Grannype" alt="Logo" className="logo"></img>
+
             </div>
 
             <div className="user-container">

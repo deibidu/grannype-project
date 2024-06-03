@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { AddEventModal } from '../components/calendar_components/CustomModal';
 import { EventInput } from '@fullcalendar/core/index.js';
+import './Calendar.scss';
 
 export function Calendar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,14 +27,14 @@ export function Calendar() {
 
   const handleModalSubmit = (newTitle: string) => {
     if (selectedEvent) {
-      // Editar titulo menu existente
+      // Edita el titulo del plato creado
       const updatedEvents = events.map(event => (event === selectedEvent ? { ...event, title: newTitle } : event));
       setEvents(updatedEvents);
     } else {
       // Añadir nuevo menu
       const newEvent: EventInput = {
         title: newTitle,
-        start: new Date().toISOString(), // Ejemplo de la fecha actual
+        start: new Date().toISOString(),
       };
       setEvents(prevEvents => [...prevEvents, newEvent]);
     }
