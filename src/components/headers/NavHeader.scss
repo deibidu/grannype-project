@@ -1,0 +1,97 @@
+@import "../../sass/fonts.scss";
+@import "../../sass/colors.scss";
+
+.section-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  width: 100%;
+  font-family: $font-text;
+
+  .nav-link {
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $color-grey-dust;
+    border-bottom: 3px solid transparent;
+    padding: 10px 0;
+    transition: background-color 0.3s, border-bottom 0.3s;
+
+    &--active {
+      color: $color-white-creamy;
+
+      .icon--active {
+        fill: $color-white-creamy;
+      }
+    }
+  }
+
+  .orange-nav {
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-orange-neon;
+
+    &--active {
+      background-color: $color-orange-neon;
+      color: $color-white-creamy;
+    }
+  }
+
+  .green-nav {
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-green-lettuce;
+
+    &--active {
+      background-color: $color-green-lettuce;
+      color: $color-white-creamy;
+    }
+  }
+
+  .yellow-nav {
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-yellow-mustard;
+
+    &--active {
+      background-color: $color-yellow-mustard;
+      color: $color-white-creamy;
+    }
+  }
+
+  .blue-nav {
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-blue-vinyl;
+
+    &--active {
+      background-color: $color-blue-vinyl;
+      color: $color-white-creamy;
+    }
+  }
+
+  .pink-nav {
+    background-color: $color-white-creamy;
+    border-bottom: 3px solid $color-pink-bubblegum;
+
+    &--active {
+      background-color: $color-pink-bubblegum;
+      color: $color-white-creamy;
+    }
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+  }
+
+  .icon--active {
+    fill: $color-white-creamy;
+  }
+
+  .section-name {
+    font-size: 14px;
+  }
+}

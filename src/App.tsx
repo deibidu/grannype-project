@@ -3,35 +3,28 @@ import './sass/style.scss';
 import './sass/colors.scss';
 import './sass/fonts.scss';
 import './sass/buttons.scss';
+import './components/headers/NavHeader.scss'
 import { Header } from './components/header';
 import { Footer } from './components/footer';
-import { ShoppingList } from './pages/ShoppingList';
-import { Calendar } from './pages/Calendar';
-import { Recipes } from './pages/Recipes';
-import { CreateRecipe } from '.pages/CreateRecipe';
-import { Home } from '.pages/Home';
+import NavHeader from './components/headers/NavHeader';
 
 export const App = () => {
   return (
     <div>
       <Header />
-      <div className="menu">
-        <NavLink to="/" className={'font-text-semibold'}>
-          Home
+      <div>
+        <NavLink to="/">
         </NavLink>
-        <NavLink to="/Recipes" className={'font-text-semibold'}>
-          Recipes
+        <NavLink to="/Recipes">
         </NavLink>
-        <NavLink to="/CreateRecipe" className={'font-text-semibold'}>
-          Create Recipe
+        <NavLink to="/CreateRecipe">
         </NavLink>
-        <NavLink to="/Calendar" className={'font-text-semibold'}>
-          Calendar
+        <NavLink to="/Calendar">
         </NavLink>
-        <NavLink to="/ShoppingList" className={'font-text-semibold'}>
-          Shopping List
+        <NavLink to="/ShoppingList">
         </NavLink>
       </div>
+      <NavHeader />
       <div>
         <Outlet />
       </div>

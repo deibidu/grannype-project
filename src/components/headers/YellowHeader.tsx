@@ -72,5 +72,4 @@ function YellowHeader() {
     </header>
   );
 }
-
 export default YellowHeader;
