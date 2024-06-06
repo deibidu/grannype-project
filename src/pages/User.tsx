@@ -1,22 +1,21 @@
 import React from 'react';
 import './User.scss';
-import userImage from './user-image.png'; // Imagen del ícono
 
-const LandingPage: React.FC = () => {
+const ProfilePage: React.FC = () => {
     return (
-        <div className="landing-page">
+        <div className="profile-page">
             <div className="topbar">
                 Welcome David
             </div>
             <div className="content">
-                <img src={userImage} alt="User" className="user-image" />
-                <div className="input-box">nombre de usuario</div>
-                <div className="input-box">correo electrónico</div>
-                <div className="input-box">contraseña</div>
+                <div className="user-icon">👤</div>
+                <div className="input-box">Nombre de usuario</div>
+                <div className="input-box">Correo electrónico</div>
+                <div className="input-box">Contraseña</div>
                 <button className="accept-button">Aceptar</button>
             </div>
         </div>
     );
 }
 
-export default LandingPage;
+export default ProfilePage;
