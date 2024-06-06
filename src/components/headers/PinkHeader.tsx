@@ -26,7 +26,7 @@ function PinkHeader() {
               }}
             >
               <img src="../assets/Images/Menu_Icon_Grey" alt="Menu_Icon_Grey" className="icon" />
-              <p className="section-name">Menú</p>
+              <p className="section-name">Menu</p>
             </div>
 
             <div
@@ -48,7 +48,7 @@ function PinkHeader() {
               }}
             >
               <img src="../assets/Images/Crear_Icon_Grey" alt="Crear_Icon_Grey" className="icon" />
-              <p className="section-name">Crear receta</p>
+              <p className="section-name">Create Recipe</p>
             </div>
 
             <div
@@ -64,7 +64,7 @@ function PinkHeader() {
 
             <div className="container" style={{ color: '#FDFBF5', backgroundColor: '#DC5F7D' }}>
               <img src="../assets/Images/Compra_Icon_Creamy" alt="Compra_Icon_Creamy" className="icon" />
-              <p className="section-name">Compra</p>
+              <p className="section-name">Shopping List</p>
             </div>
           </div>
         </div>

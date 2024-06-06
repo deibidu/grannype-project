@@ -14,7 +14,7 @@ export const Header = () => {
         </div>
 
         <div className="user-container">
-          <p className={'font-title'}>Bienvenido, David</p>
+          <p className={'font-title'}>Welcome, David</p>
           <img src={UserIconCreamy} alt="Ícono de Usuario" className="user-icon" />
         </div>
       </div>
