@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../sass/colors.scss';
 import '../sass/fonts.scss';
 import '../pages/Recipes.scss';
 import searchIcon from '../assets/images/search_icon_green.svg';
+import arrowIcon from '../assets/images/ArrowIconGreen.svg';
 
 export function Recipes() {
   const [search, setSearch] = useState('');
@@ -11,6 +12,15 @@ export function Recipes() {
   const [recipes, setRecipes] = useState([]);
   const [newRecipeName, setNewRecipeName] = useState('');
   const [newRecipeContent, setNewRecipeContent] = useState('');
+
+  useEffect(() => {
+    const exampleRecipe = {
+      id: 1,
+      name: 'Ejemplo de Receta',
+      imageUrl: 'https://via.placeholder.com/150', // URL de imagen de ejemplo
+    };
+    setRecipes([exampleRecipe]);
+  }, []);
 
   function handleSearch(event) {
     if (event.key === 'Enter') {
@@ -27,18 +37,6 @@ export function Recipes() {
     setSearch(newRecipeName);
   }
 
-  function handleCreateRecipe() {
-    if (newRecipeName.trim() !== '' && newRecipeContent.trim() !== '') {
-      const newRecipe = {
-        id: recipes.length + 1,
-        name: newRecipeName,
-        content: newRecipeContent,
-      };
-      setRecipes([...recipes, newRecipe]);
-      setNewRecipeName('');
-      setNewRecipeContent('');
-    }
-  }
   /* FUNCIONES PARA CUANDO ESTÉN LAS RECETAS HECHAS Y PUEDAS EDITARLAS O ELIMINARLAS
     function handleEditRecipe(id) { }
   
@@ -47,12 +45,13 @@ export function Recipes() {
       setRecipes(updatedRecipes);
     }
   */
+
   const filteredRecipes = search
     ? recipes.filter(
-        recipe =>
-          recipe.name.toLowerCase().includes(search.toLowerCase()) ||
-          recipe.content.toLowerCase().includes(search.toLowerCase()),
-      )
+      recipe =>
+        recipe.name.toLowerCase().includes(search.toLowerCase()) ||
+        recipe.content.toLowerCase().includes(search.toLowerCase()),
+    )
     : recipes;
 
   return (
@@ -80,10 +79,12 @@ export function Recipes() {
       <ul className="recipe-list">
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map(recipe => (
-            <li key={recipe.id}>
-              <strong>{recipe.name}</strong>: {recipe.content}
-              <button onClick={() => handleEditRecipe(recipe.id)}>Edit</button>
-              <button onClick={() => handleDeleteRecipe(recipe.id)}>Delete</button>
+            <li key={recipe.id} className="recipe-item">
+              <img src={recipe.imageUrl} alt={recipe.name} className="recipe-image" />
+              <div className="recipe-footer">
+                <h2>{recipe.name}</h2>
+                <img src={arrowIcon} alt="View Recipe" className="arrow-icon" />
+              </div>
             </li>
           ))
         ) : (
