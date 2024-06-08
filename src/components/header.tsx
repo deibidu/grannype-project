@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoImage from '../assets/images/Logo_Grannype.svg';
 import UserIconCreamy from '../assets/images/profile_icon__creamy.svg';

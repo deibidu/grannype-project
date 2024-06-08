@@ -5,12 +5,17 @@ import { Calendar } from './pages/Calendar.tsx';
 import { CreateRecipe } from './pages/CreateRecipe.tsx';
 import { Recipes } from './pages/Recipes.tsx';
 import { Home } from './pages/Home.tsx';
+import { Header } from './components/header.tsx';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
+      {
+        path: '/Header',
+        element: <Header />,
+      },
       {
         path: '/',
         element: <Home />,
