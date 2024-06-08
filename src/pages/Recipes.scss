@@ -3,11 +3,14 @@
 
 .recipes-container {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .search-bar {
   display: flex;
-  align-items: center;
+  align-items: right;
   margin-bottom: 1rem;
 
   .search-icon {
@@ -33,57 +36,71 @@
   .suggestion {
     background-color: $color-green-lettuce;
     color: $color-white-creamy;
+    font-family: $font-text;
     padding: 0.5rem 1rem;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: darken($color-green-lettuce, 10%);
+      background-color: $color-green-lettuce;
     }
+  }
+}
+
+.new-recipe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  input,
+  textarea {
+    padding: 0.5rem;
+    border: 1px solid $color-white-creamy;
+    border-radius: 4px;
   }
 }
 
 .recipe-list {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .recipe-item {
-    width: 824px;
-    height: 332px;
     display: flex;
     flex-direction: column;
-    background-color: $color-white-creamy;
+    width: 824px;
+    height: 348px;
     border: 2px solid $color-green-lettuce;
     border-radius: 8px;
-    margin: 20px auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    overflow: hidden;
 
     .recipe-image {
       width: 100%;
-      height: 100%;
+      height: 245px;
       object-fit: cover;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
     }
 
-    .recipe-footer {
+    .recipe-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: $color-white-creamy;
-      padding: 10px 20px;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
+      padding: 1rem;
+      height: calc(100% - 245px);
 
-      h2 {
+      .recipe-title {
         color: $color-green-lettuce;
         font-family: $font-text;
         font-size: 1.5rem;
-        margin: 0;
+        font-weight: bold;
       }
 
-      .arrow-icon {
+      .recipe-arrow {
         width: 24px;
         height: 24px;
         cursor: pointer;
