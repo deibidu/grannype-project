@@ -1,5 +1,6 @@
 import React from 'react';
 import './User.scss';
+import userIconGrey from '../assets/images/userIconGrey.png';
 
 const ProfilePage: React.FC = () => {
     return (
@@ -8,7 +9,7 @@ const ProfilePage: React.FC = () => {
                 Welcome David
             </div>
             <div className="content">
-                <div className="user-icon">👤</div>
+                <img src={userIconGrey}></img>
                 <div className="input-box">Nombre de usuario</div>
                 <div className="input-box">Correo electrónico</div>
                 <div className="input-box">Contraseña</div>
