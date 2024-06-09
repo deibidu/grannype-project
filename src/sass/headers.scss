@@ -1,4 +1,3 @@
-/* Header común superior gris*/
 @import "../sass/colors.scss";
 
 .common-header {
@@ -22,7 +21,7 @@
 .user-container {
   padding-right: 36px;
   display: flex;
-  align-items: center;
+  align-items: right;
   font-family: Arial;
 }
 

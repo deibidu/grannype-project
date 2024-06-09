@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../sass/colors.scss';
 import '../sass/fonts.scss';
 import '../pages/Recipes.scss';
 import searchIcon from '../assets/images/search_icon_green.svg';
+import arrowIcon from '../assets/images/ArrowIconGreen.svg';
+import examplePhotoRecipe1 from '../assets/images/examplePhotoRecipe1.jpg';
+import examplePhotorecipe2 from '../assets/images/examplePhotoRecipe2.jpg';
+import examplePhotoRecipe3 from '../assets/images/examplePhotoRecipe3.jpg';
 
 export function Recipes() {
   const [search, setSearch] = useState('');
   const [suggestions, setSuggestions] = useState(['Aceite', 'Cebolla', 'Patata', 'Arroz', 'Huevo', 'Garbanzos']);
   const [showSearch, setShowSearch] = useState(false);
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([
+    { id: 1, name: 'Ensalada César con aguacate', image: examplePhotoRecipe1 },
+    { id: 2, name: 'Tortitas con nata y fresas', image: examplePhotorecipe2 },
+    { id: 3, name: 'Especias caseras', image: examplePhotoRecipe3 }
+  ]);
   const [newRecipeName, setNewRecipeName] = useState('');
   const [newRecipeContent, setNewRecipeContent] = useState('');
 
@@ -27,18 +35,6 @@ export function Recipes() {
     setSearch(newRecipeName);
   }
 
-  function handleCreateRecipe() {
-    if (newRecipeName.trim() !== '' && newRecipeContent.trim() !== '') {
-      const newRecipe = {
-        id: recipes.length + 1,
-        name: newRecipeName,
-        content: newRecipeContent,
-      };
-      setRecipes([...recipes, newRecipe]);
-      setNewRecipeName('');
-      setNewRecipeContent('');
-    }
-  }
   /* FUNCIONES PARA CUANDO ESTÉN LAS RECETAS HECHAS Y PUEDAS EDITARLAS O ELIMINARLAS
     function handleEditRecipe(id) { }
   
@@ -48,11 +44,9 @@ export function Recipes() {
     }
   */
   const filteredRecipes = search
-    ? recipes.filter(
-        recipe =>
-          recipe.name.toLowerCase().includes(search.toLowerCase()) ||
-          recipe.content.toLowerCase().includes(search.toLowerCase()),
-      )
+    ? recipes.filter(recipe =>
+      recipe.name.toLowerCase().includes(search.toLowerCase())
+    )
     : recipes;
 
   return (
@@ -77,19 +71,21 @@ export function Recipes() {
           </span>
         ))}
       </div>
-      <ul className="recipe-list">
+      <div className="recipe-list">
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map(recipe => (
-            <li key={recipe.id}>
-              <strong>{recipe.name}</strong>: {recipe.content}
-              <button onClick={() => handleEditRecipe(recipe.id)}>Edit</button>
-              <button onClick={() => handleDeleteRecipe(recipe.id)}>Delete</button>
-            </li>
+            <div key={recipe.id} className="recipe-item">
+              <img src={recipe.image} alt="Recipe" className="recipe-image" />
+              <div className="recipe-content">
+                <span className="recipe-title">{recipe.name}</span>
+                <img src={arrowIcon} alt="Go to recipe" className="recipe-arrow" />
+              </div>
+            </div>
           ))
         ) : (
           <p>No se encuentra ninguna receta</p>
         )}
-      </ul>
+      </div>
     </div>
   );
 }
