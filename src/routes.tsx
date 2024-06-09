@@ -6,6 +6,7 @@ import { CreateRecipe } from './pages/CreateRecipe.tsx';
 import { Recipes } from './pages/Recipes.tsx';
 import { Home } from './pages/Home.tsx';
 import { Header } from './components/header.tsx';
+import User from './pages/User.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -13,8 +14,12 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '/Header',
+        path: 'Header',
         element: <Header />,
+      },
+      {
+        path: 'User',
+        element: <User />,
       },
       {
         path: '/',
