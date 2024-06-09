@@ -9,11 +9,13 @@ export const Header = () => {
     <div>
       <div className="common-header">
         <div className="logo-container">
-          <img src={LogoImage} alt="Logo" className="logo"></img>
+          <img src={LogoImage} alt="Logo" className="logo" />
         </div>
         <div className="user-container">
-          <p className={'font-title'}>Welcome, David</p>
-          <img src={UserIconCreamy} alt="Ícono de Usuario" className="user-icon" />
+          <Link to="/User">
+            <p className="font-title">Bienvenido, David</p>
+            <img src={UserIconCreamy} alt="Ícono de Usuario" className="user-icon" />
+          </Link>
         </div>
       </div>
     </div>
