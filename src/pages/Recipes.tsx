@@ -6,6 +6,7 @@ import searchIcon from '../assets/images/search_icon_green.svg';
 import arrowIcon from '../assets/images/ArrowIconGreen.svg';
 import examplePhotoRecipe1 from '../assets/images/examplePhotoRecipe1.jpg';
 import examplePhotorecipe2 from '../assets/images/examplePhotoRecipe2.jpg';
+import examplePhotoRecipe3 from '../assets/images/examplePhotoRecipe3.jpg';
 
 export function Recipes() {
   const [search, setSearch] = useState('');
@@ -13,7 +14,8 @@ export function Recipes() {
   const [showSearch, setShowSearch] = useState(false);
   const [recipes, setRecipes] = useState([
     { id: 1, name: 'Ensalada César con aguacate', image: examplePhotoRecipe1 },
-    { id: 2, name: 'Tortitas con nata y fresas', image: examplePhotorecipe2 }
+    { id: 2, name: 'Tortitas con nata y fresas', image: examplePhotorecipe2 },
+    { id: 3, name: 'Especias caseras', image: examplePhotoRecipe3 }
   ]);
   const [newRecipeName, setNewRecipeName] = useState('');
   const [newRecipeContent, setNewRecipeContent] = useState('');
@@ -33,18 +35,6 @@ export function Recipes() {
     setSearch(newRecipeName);
   }
 
-  function handleCreateRecipe() {
-    if (newRecipeName.trim() !== '' && newRecipeContent.trim() !== '') {
-      const newRecipe = {
-        id: recipes.length + 1,
-        name: newRecipeName,
-        content: newRecipeContent,
-      };
-      setRecipes([...recipes, newRecipe]);
-      setNewRecipeName('');
-      setNewRecipeContent('');
-    }
-  }
   /* FUNCIONES PARA CUANDO ESTÉN LAS RECETAS HECHAS Y PUEDAS EDITARLAS O ELIMINARLAS
     function handleEditRecipe(id) { }
   
@@ -54,10 +44,8 @@ export function Recipes() {
     }
   */
   const filteredRecipes = search
-    ? recipes.filter(
-      recipe =>
-        recipe.name.toLowerCase().includes(search.toLowerCase()) ||
-        recipe.content.toLowerCase().includes(search.toLowerCase()),
+    ? recipes.filter(recipe =>
+      recipe.name.toLowerCase().includes(search.toLowerCase())
     )
     : recipes;
 

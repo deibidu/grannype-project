@@ -67,7 +67,8 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 
   .recipe-item {
     display: flex;
@@ -101,8 +102,8 @@
       }
 
       .recipe-arrow {
-        width: 24px;
-        height: 24px;
+        width: 36px;
+        height: 36px;
         cursor: pointer;
       }
     }
@@ -111,5 +112,6 @@
   p {
     padding: 0.5rem;
     color: $color-black-the-darkness;
+    font-family: $font-text;
   }
 }
