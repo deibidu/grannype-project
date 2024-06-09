@@ -26,7 +26,7 @@ function GreenHeader() {
               }}
             >
               <img src="../assets/Images/Menu_Icon_Grey" alt="Menu_Icon_Grey" className="icon" />
-              <p className="section-name">Menú</p>
+              <p className="section-name">Menu</p>
             </div>
 
             <div className="container" style={{ backgroundColor: '#4AAF73', color: '#FDFBF5' }}>
@@ -42,7 +42,7 @@ function GreenHeader() {
               }}
             >
               <img src="../assets/Images/Crear_Icon_Grey" alt="Crear_Icon_Grey" className="icon" />
-              <p className="section-name">Crear receta</p>
+              <p className="section-name">Create Recipe</p>
             </div>
 
             <div
@@ -64,7 +64,7 @@ function GreenHeader() {
               }}
             >
               <img src="../assets/Images/Compra_Icon_Grey" alt="Compra_Icon_Grey" className="icon" />
-              <p className="section-name">Compra</p>
+              <p className="section-name">Shopping List</p>
             </div>
           </div>
         </div>

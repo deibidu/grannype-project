@@ -4,19 +4,17 @@
 html {
   background-color: $color-white-creamy;
   background-image: url(../assets/images/icons-bg.png);
+  position: relative;
 }
 
 body {
   margin: 0;
+  position: relative;
 }
 
 a {
   text-decoration: none;
   color: $color-grey-dust;
-}
-
-ul {
-  list-style: none;
 }
 
 .menu {

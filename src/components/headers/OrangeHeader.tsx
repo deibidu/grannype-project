@@ -20,7 +20,7 @@ function OrangeHeader() {
           <div className="section-header">
             <div className="container" style={{ backgroundColor: '#FF683F', color: '#FDFBF5' }}>
               <img src="../assets/Images/Menu_Icon_Creamy" alt="Menu_Icon_Creamy" className="icon" />
-              <p className="section-name">Menú</p>
+              <p className="section-name">Menu</p>
             </div>
 
             <div
@@ -42,7 +42,7 @@ function OrangeHeader() {
               }}
             >
               <img src="../assets/Images/Crear_Icon_Grey" alt="Crear_Icon_Grey" className="icon" />
-              <p className="section-name">Crear receta</p>
+              <p className="section-name">Create Recipe</p>
             </div>
 
             <div
@@ -64,7 +64,7 @@ function OrangeHeader() {
               }}
             >
               <img src="../assets/Images/Compra_Icon_Grey" alt="Compra_Icon_Grey" className="icon" />
-              <p className="section-name">Compra</p>
+              <p className="section-name">Shopping List</p>
             </div>
           </div>
         </div>
