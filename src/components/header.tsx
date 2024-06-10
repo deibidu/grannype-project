@@ -12,8 +12,15 @@ export const Header = () => {
           <img src={LogoImage} alt="Logo" className="logo" />
         </div>
         <div className="user-container">
-          <Link to="/User">
-            <p className="font-title">Bienvenido, David</p>
+          <Link
+            to="/User"
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
+            <p className="font-title">Welcome, David</p>
             <img src={UserIconCreamy} alt="Ícono de Usuario" className="user-icon" />
           </Link>
         </div>

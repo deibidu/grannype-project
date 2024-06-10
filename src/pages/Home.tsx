@@ -3,7 +3,7 @@ import './Home.scss';
 export const Home = () => {
   return (
     <>
-      <h1 className={'font-title-sections'}>Your recipes are waiting for you</h1>;
+      <h1 className={'font-title-sections'}>Your recipes are waiting for you</h1>
       <div className="widgets-Home">
         <div className="Home_widgetCard">
           <div className="Home_lastRecipes__container">
@@ -26,7 +26,6 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      ;
     </>
   );
 };

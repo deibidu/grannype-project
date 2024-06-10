@@ -4,8 +4,8 @@ import '../components/footer.scss';
 
 export const Footer = () => {
   return (
-    <div className={'footer'}>
+    <footer className={'footer'}>
       <p className={'font-text-semibold'}>©2024 Grannype</p>
-    </div>
+    </footer>
   );
 };

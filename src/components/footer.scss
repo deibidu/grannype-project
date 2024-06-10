@@ -10,16 +10,10 @@
   margin: 0;
   box-sizing: border-box;
   bottom: 0px;
-  position: relative;
-}
-.sticky-footer {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
 }
 
 .main {
   flex: 1;
   padding: 2rem;
+  min-height: 100vh;
 }

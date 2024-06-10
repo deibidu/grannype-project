@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
+import styled from 'styled-components';
 import { CompactPicker } from 'react-color';
-import { FaFillDrip, FaFont, FaParagraph, FaPalette } from 'react-icons/fa';
+import { FaFillDrip, FaParagraph, FaPalette } from 'react-icons/fa';
 import { BiBorderOuter } from 'react-icons/bi';
 import { PiSelectionBackgroundBold } from 'react-icons/pi';
 import { IoMdResize } from 'react-icons/io';
+import { MdTitle, MdFormatSize } from 'react-icons/md';
 import WebFont from 'webfontloader';
 import { backgroundImageOptions } from './CreateRecipe-BackgroundImages-Recipe';
 import { fontOptionsTitle, fontOptionsText } from './CreateRecipes-Toolbar__fonts';
@@ -18,6 +20,14 @@ const sizeOptions = [
   { value: '20px', label: '20px' },
 ];
 
+const sizeOptionsTitle = [
+  { value: '18px', label: '18px' },
+  { value: '20px', label: '20px' },
+  { value: '22px', label: '22px' },
+  { value: '24px', label: '24px' },
+  { value: '26px', label: '26px' },
+];
+
 interface ToolbarProps {
   setBackgroundColor: (color: string) => void;
   setBorderColor: (color: string) => void;
@@ -25,6 +35,7 @@ interface ToolbarProps {
   setFontFamilyTitle: (fontFamily: string) => void;
   setFontFamilyText: (fontFamily: string) => void;
   setFontSize: (fontSize: string) => void;
+  setFontSizeTitle: (fontSize: string) => void;
   setBackgroundImage: (image: string) => void;
 }
 
@@ -35,14 +46,16 @@ const Toolbar: React.FC<ToolbarProps> = ({
   setFontFamilyTitle,
   setFontFamilyText,
   setFontSize,
+  setFontSizeTitle,
   setBackgroundImage,
 }) => {
   const [currentColorBackground, setCurrentColorBackground] = useState('#fdfbf5');
   const [currentColorFont, setCurrentColorFont] = useState('#4b4b4b');
   const [currentColorBorder, setCurrentColorBorder] = useState('#4b4b4b');
-  const [currentFontFamilyTitle, setCurrentFontFamilyTitle] = useState('yesteryear,sans-serif');
-  const [currentFontFamilyText, setCurrentFontFamilyText] = useState('jost, sans-serif');
+  const [currentFontFamilyTitle, setCurrentFontFamilyTitle] = useState('Caprasimo, sans-serif');
+  const [currentFontFamilyText, setCurrentFontFamilyText] = useState('Jost, sans-serif');
   const [currentFontSize, setCurrentFontSize] = useState('16px');
+  const [currentFontSizeTitle, setCurrentFontSizeTitle] = useState('22px');
   const [selectedBackgroundImage, setSelectedBackgroundImage] = useState(backgroundImageOptions()[0]);
 
   const loadFont = (family: string) => {
@@ -60,26 +73,39 @@ const Toolbar: React.FC<ToolbarProps> = ({
     });
   };
 
-  const handleOnChangeFontSize = (fontSize: { value: string; label: string }) => {
-    setCurrentFontSize(fontSize.value);
-    setFontSize(fontSize.value);
+  const handleOnChangeFontSize = (fontSize: SingleValue<{ value: string; label: string }>) => {
+    if (fontSize) {
+      setFontSize(fontSize.value);
+    }
   };
 
-  const handleOnChangeFontFamilyTitle = (fontFamily: { value: string; label: string }) => {
-    setCurrentFontFamilyTitle(fontFamily.value);
-    setFontFamilyTitle(fontFamily.value);
-    loadFont(fontFamily.value.split(',')[0]); // Cargar la fuente
+  const handleOnChangeFontSizeTitle = (fontSizeTitle: SingleValue<{ value: string; label: string }>) => {
+    if (fontSizeTitle) {
+      setFontSizeTitle(fontSizeTitle.value);
+    }
   };
 
-  const handleOnChangeFontFamilyText = (fontFamily: { value: string; label: string }) => {
-    setCurrentFontFamilyText(fontFamily.value);
-    setFontFamilyText(fontFamily.value);
-    loadFont(fontFamily.value.split(',')[0]); // Cargar la fuente
+  const handleOnChangeFontFamilyTitle = (fontFamily: SingleValue<{ value: string; label: string }>) => {
+    if (fontFamily) {
+      setCurrentFontFamilyTitle(fontFamily.value);
+      setFontFamilyTitle(fontFamily.value);
+      loadFont(fontFamily.value.split(',')[0]);
+    }
   };
 
-  const handleBackgroundImageChange = (option: { value: string; label: string }) => {
-    setSelectedBackgroundImage(option);
-    setBackgroundImage(option.value);
+  const handleOnChangeFontFamilyText = (fontFamily: SingleValue<{ value: string; label: string }>) => {
+    if (fontFamily) {
+      setCurrentFontFamilyText(fontFamily.value);
+      setFontFamilyText(fontFamily.value);
+      loadFont(fontFamily.value.split(',')[0]);
+    }
+  };
+
+  const handleBackgroundImageChange = (option: SingleValue<{ value: string; label: string }>) => {
+    if (option) {
+      setSelectedBackgroundImage(option);
+      setBackgroundImage(option.value);
+    }
   };
 
   return (
@@ -124,7 +150,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
         />
       </div>
       <div className="toolbar-button">
-        <FaFont />
+        <MdTitle />
         <Select
           value={{ value: currentFontFamilyTitle, label: currentFontFamilyTitle }}
           onChange={handleOnChangeFontFamilyTitle}
@@ -137,6 +163,14 @@ const Toolbar: React.FC<ToolbarProps> = ({
           value={{ value: currentFontFamilyText, label: currentFontFamilyText }}
           onChange={handleOnChangeFontFamilyText}
           options={fontOptionsText}
+        />
+      </div>
+      <div className="toolbar-button">
+        <MdFormatSize />
+        <Select
+          value={{ value: currentFontSizeTitle, label: currentFontSizeTitle }}
+          onChange={handleOnChangeFontSizeTitle}
+          options={sizeOptionsTitle}
         />
       </div>
       <div className="toolbar-button">

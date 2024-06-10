@@ -45,8 +45,9 @@ const RecipeContainer = styled.div<{
   }
 `;
 
-const TitleFont = styled.h3<{ fontFamilyTitle: string }>`
+const TitleFont = styled.h3<{ fontFamilyTitle: string; fontSizeTitle: string }>`
   font-family: ${props => props.fontFamilyTitle};
+  font-size: ${props => props.fontSizeTitle};
 `;
 
 const TextFont = styled.p<{ fontFamilyText: string }>`
@@ -66,36 +67,66 @@ const SectionContainer = styled.div<{
   color: ${props => props.fontColor};
   font-size: ${props => props.fontSize};
   font-family: ${props => props.fontFamilyText};
+  position: relative;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: auto;
+`;
+
+const ImageOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 `;
 
 export const CreateRecipe: React.FC = () => {
-  const [title, setTitle] = useState('');
-  const [ingredients, setIngredients] = useState<string[]>([]);
-  const [showInput, setShowInput] = useState(false);
-  const [recipe, setRecipe] = useState<Recipe>({ title: '', image: '', ingredients: [''], steps: '', notes: '' });
+  const [recipe, setRecipe] = useState<Recipe>({ title: '', image: '', ingredients: [], steps: '', notes: '' });
   const [backgroundColor, setBackgroundColor] = useState('#fdfbf5');
   const [currentBackgroundImage, setCurrentBackgroundImage] = useState(backgroundImageOptions()[0].value);
   const [borderColor, setBorderColor] = useState('#4b4b4b');
   const [fontColor, setFontColor] = useState('#4b4b4b');
-  const [currentFontFamilyTitle, setCurrentFontFamilyTitle] = useState('limelight, sans-serif');
-  const [currentFontFamilyText, setCurrentFontFamilyText] = useState('jost, sans-serif');
+  const [currentFontFamilyTitle, setCurrentFontFamilyTitle] = useState('Caprasimo,sans-serif');
+  const [currentFontFamilyText, setCurrentFontFamilyText] = useState('Jost,sans-serif');
   const [fontSize, setFontSize] = useState('16px');
-  const [selectedImage, setSelectedImage] = useState<string | undefined>();
+  const [fontSizeTitle, setFontSizeTitle] = useState('22px');
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
+  const [image, setImage] = useState<File | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
+  const [isOpen, setIsOpen] = useState(false);
+  const [items, setItems] = useState<{ id: string; value: string }[]>([]);
+  const [inputValue, setInputValue] = useState('');
+  const [showInput, setShowInput] = useState(false);
+
   const backgroundImageUrl = currentBackgroundImage;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setRecipe({ ...recipe, [name]: value });
-    setTitle(value);
+    setRecipe(prevRecipe => ({ ...prevRecipe, [name]: value }));
   };
 
-  // añadir imagenes
-  const [image, setImage] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
-  const [imageUrlFromInternet, setImageUrlFromInternet] = useState<string | undefined>(undefined);
-  const [isOpen, setIsOpen] = useState(false);
-
-  // función para manejar el cambio de imagen
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -103,28 +134,26 @@ export const CreateRecipe: React.FC = () => {
       const reader = new FileReader();
       reader.onload = () => {
         setImageUrl(reader.result as string);
+        setSelectedImage(undefined); // Clear selectedImage when a local image is chosen
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // función para manejar la búsqueda de imagen en Internet
   const handleSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
+    setImage(null); // Clear local image when an API image is chosen
+    setImageUrl(undefined); // Clear imageUrl when an API image is chosen
     handleModalClose();
   };
 
-  const handleSearchImage = () => {
+  const handleOpenModal = () => {
     setIsOpen(true);
   };
 
   const handleModalClose = () => {
     setIsOpen(false);
   };
-
-  // lista de ingredientes
-  const [items, setItems] = useState<{ id: string; value: string }[]>([]);
-  const [inputValue, setInputValue] = useState('');
 
   const addItem = () => {
     if (inputValue.trim()) {
@@ -133,7 +162,7 @@ export const CreateRecipe: React.FC = () => {
     }
   };
 
-  const handleAddIngredient = () => {
+  const handleAddIngredient = (e: React.MouseEvent<HTMLButtonElement>) => {
     addItem();
     e.stopPropagation();
   };
@@ -144,7 +173,10 @@ export const CreateRecipe: React.FC = () => {
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-      if (!event.target.closest('.cr-ingredients__title') && !event.target.closest('.cr-ingredients__list')) {
+      if (
+        !document.querySelector('.cr-ingredients__title')?.contains(event.target as Node) &&
+        !document.querySelector('.cr-ingredients__list')?.contains(event.target as Node)
+      ) {
         setShowInput(false);
       }
     };
@@ -152,7 +184,7 @@ export const CreateRecipe: React.FC = () => {
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     };
-  }, [showInput]);
+  }, []);
 
   return (
     <>
@@ -161,6 +193,7 @@ export const CreateRecipe: React.FC = () => {
         setBorderColor={setBorderColor}
         setFontColor={setFontColor}
         setFontSize={setFontSize}
+        setFontSizeTitle={setFontSizeTitle}
         setFontFamilyTitle={setCurrentFontFamilyTitle}
         setFontFamilyText={setCurrentFontFamilyText}
         setBackgroundImage={setCurrentBackgroundImage}
@@ -180,7 +213,7 @@ export const CreateRecipe: React.FC = () => {
           fontFamilyText={currentFontFamilyText}
           style={{ padding: 0 }}
         >
-          <TitleFont fontFamilyTitle={currentFontFamilyTitle}>
+          <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
             <input
               className="createrecipe-inputMealTitle"
               placeholder="Your meal title"
@@ -190,7 +223,7 @@ export const CreateRecipe: React.FC = () => {
               style={{
                 backgroundColor,
                 color: fontColor,
-                fontSize,
+                fontSize: fontSizeTitle,
                 fontFamily: currentFontFamilyTitle,
               }}
             />
@@ -205,17 +238,34 @@ export const CreateRecipe: React.FC = () => {
             fontFamilyText={currentFontFamilyText}
             className="cr-image"
           >
-            {imageUrl ? (
-              <img src={imageUrl} alt="recipe-image" />
-            ) : selectedImage ? (
-              <img src={selectedImage} alt="recipe-image" />
-            ) : (
-              <RiImageAddFill />
-            )}
-            <input type="file" onChange={handleImageChange} />
-            <button onClick={handleSearchImage}>Search image</button>
-            <Modal_IMG isOpen={isOpen} onClose={handleModalClose} onSelectImage={handleSelectImage} />
+            <ImageContainer>
+              {imageUrl || selectedImage ? (
+                <>
+                  <Image src={imageUrl || selectedImage} alt="recipe-image" />
+                  <ImageOverlay>
+                    <button onClick={handleOpenModal}>Choose from API</button>
+                    <label htmlFor="localImageUpload">
+                      <input
+                        type="file"
+                        id="localImageUpload"
+                        style={{ display: 'none' }}
+                        onChange={handleImageChange}
+                      />
+                      Choose from Local
+                    </label>
+                  </ImageOverlay>
+                </>
+              ) : (
+                <div>
+                  <RiImageAddFill size={50} />
+                  <input type="file" onChange={handleImageChange} />
+                  <button onClick={handleOpenModal}>Search image</button>
+                </div>
+              )}
+            </ImageContainer>
+            {isOpen && <Modal_IMG onClose={handleModalClose} onSelectImage={handleSelectImage} isOpen={isOpen} />}
           </SectionContainer>
+
           <SectionContainer
             backgroundColor={backgroundColor}
             fontColor={fontColor}
@@ -224,14 +274,16 @@ export const CreateRecipe: React.FC = () => {
             className="cr-ingredients"
           >
             <div className="cr-ingredients__title" onClick={() => setShowInput(true)}>
-              <TitleFont fontFamilyTitle={currentFontFamilyTitle}>
-                <h3 style={{ color: fontColor, fontSize, fontFamily: currentFontFamilyTitle }}>Ingredients</h3>
+              <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
+                <h3 style={{ color: fontColor, fontSize: fontSizeTitle, fontFamily: currentFontFamilyTitle }}>
+                  Ingredients
+                </h3>
               </TitleFont>
             </div>
             <div className="cr-ingredients__list">
               <ul className="cr-ingredients__ul">
                 {items.map(item => (
-                  <li className="cr-ingredients__item" key={item.id}>
+                  <li className="cr-ingredients__item cr-ingred-itemcontainer" style={{}} key={item.id}>
                     <TextFont fontFamilyText={currentFontFamilyText}>{item.value}</TextFont>
                     <button className="button__secondary-grey delete_btn" onClick={() => handleRemove(item.id)}>
                       -
@@ -240,7 +292,7 @@ export const CreateRecipe: React.FC = () => {
                 ))}
               </ul>
               {showInput && (
-                <div className="cr-ingredients__item">
+                <div className="cr-ingredients__input">
                   <input
                     type="text"
                     value={inputValue}
@@ -264,8 +316,10 @@ export const CreateRecipe: React.FC = () => {
           fontFamilyText={currentFontFamilyText}
           className="createrecipe-preparation"
         >
-          <TitleFont fontFamilyTitle={currentFontFamilyTitle}>
-            <h3 style={{ color: fontColor, fontSize, fontFamily: currentFontFamilyTitle }}>Preparation</h3>
+          <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
+            <h3 style={{ color: fontColor, fontSize: fontSizeTitle, fontFamily: currentFontFamilyTitle }}>
+              Preparation
+            </h3>
           </TitleFont>
           <TextFont fontFamilyText={currentFontFamilyText}>
             <textarea
@@ -279,6 +333,13 @@ export const CreateRecipe: React.FC = () => {
                 backgroundColor,
                 color: fontColor,
                 fontSize,
+                width: '100%',
+                border: 'none',
+                boxSizing: 'border-box',
+                minHeight: '100px',
+                padding: '10px',
+                resize: 'vertical',
+                overflow: 'auto',
               }}
             />
           </TextFont>
@@ -290,11 +351,12 @@ export const CreateRecipe: React.FC = () => {
           fontFamilyText={currentFontFamilyText}
           className="createrecipe-notes"
         >
-          <TitleFont fontFamilyTitle={currentFontFamilyTitle}>
-            <h3 style={{ color: fontColor, fontSize, fontFamily: currentFontFamilyTitle }}>Notes</h3>
+          <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
+            <h3 style={{ color: fontColor, fontSize: fontSizeTitle, fontFamily: currentFontFamilyTitle }}>Notes</h3>
           </TitleFont>
           <TextFont fontFamilyText={currentFontFamilyText}>
             <textarea
+              id="cr-notes"
               className="cr-notes"
               placeholder="Any notes?"
               value={recipe.notes}
@@ -305,6 +367,13 @@ export const CreateRecipe: React.FC = () => {
                 backgroundColor,
                 color: fontColor,
                 fontSize,
+                width: '100%',
+                border: 'none',
+                boxSizing: 'border-box',
+                minHeight: '100px',
+                padding: '10px',
+                resize: 'vertical',
+                overflow: 'auto',
               }}
             />
           </TextFont>

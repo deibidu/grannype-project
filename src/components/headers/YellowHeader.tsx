@@ -40,7 +40,7 @@ function YellowHeader() {
               <p className="section-name">Recipes</p>
             </div>
 
-            <div className="container" style={{ color: '#FDFBF5', backgroundColor: '#DC5F7D' }}>
+            <div className="container" style={{ color: '#4B4B4B', backgroundColor: '#DC5F7D' }}>
               <img src="../assets/Images/Crear_Icon_Creamy" alt="Crear_Icon_Creamy" className="icon" />
               <p className="section-name">Crear receta</p>
             </div>
