@@ -17,6 +17,10 @@
   row-gap: 16px;
 }
 
+.Home_widgetCard--no-border {
+  border: none;
+}
+
 .Home_widgetTitle {
   background-color: $color-orange-neon;
   border: solid 2px $color-orange-neon;
@@ -38,4 +42,47 @@
   flex-direction: row;
   align-content: center;
   margin-top: 32px;
+}
+
+.Home_lastRecipes__container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.recipe-item {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid $color-grey-disabled;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  width: calc(33% - 1rem);
+
+  .recipe-image {
+    width: 100%;
+    object-fit: cover;
+    height: 150px;
+  }
+
+  .recipe-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-white-creamy;
+    padding: 1rem;
+
+    .recipe-title {
+      color: $color-orange-neon;
+      font-family: $font-text;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .recipe-arrow {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+  }
 }
