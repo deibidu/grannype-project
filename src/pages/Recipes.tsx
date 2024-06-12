@@ -15,7 +15,7 @@ export function Recipes() {
   const [recipes, setRecipes] = useState([
     { id: 1, name: 'Ensalada César con aguacate', image: examplePhotoRecipe1 },
     { id: 2, name: 'Tortitas con nata y fresas', image: examplePhotorecipe2 },
-    { id: 3, name: 'Especias caseras', image: examplePhotoRecipe3 }
+    { id: 3, name: 'Especias caseras', image: examplePhotoRecipe3 },
   ]);
   const [newRecipeName, setNewRecipeName] = useState('');
   const [newRecipeContent, setNewRecipeContent] = useState('');
@@ -44,9 +44,7 @@ export function Recipes() {
     }
   */
   const filteredRecipes = search
-    ? recipes.filter(recipe =>
-      recipe.name.toLowerCase().includes(search.toLowerCase())
-    )
+    ? recipes.filter(recipe => recipe.name.toLowerCase().includes(search.toLowerCase()))
     : recipes;
 
   return (
