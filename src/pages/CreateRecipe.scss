@@ -10,7 +10,7 @@
   flex-direction: column;
   flex: 1;
   align-items: center;
-  padding: 12px 18px;
+  padding: 12px;
   border: solid 2px;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -20,7 +20,7 @@
 }
 
 .cr-ingredients {
-  padding: 12px 18px;
+  padding: 12px;
   border: solid 2px;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -30,7 +30,7 @@
 }
 .createrecipe-title input {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border: none;
 }
 
@@ -78,7 +78,6 @@
   width: 100%;
   margin-left: auto;
   vertical-align: text-top;
-  border-bottom: 1px solid $color-grey-disabled;
 }
 
 .cr-ingredients__item p {
@@ -111,7 +110,7 @@
 }
 
 .cr-image img {
-  padding: 12px 18px;
+  padding: 12px;
   width: 100%;
   box-sizing: border-box;
   margin-right: auto;

@@ -1,4 +1,3 @@
-import React from 'react';
 import '.../sass/headers.scss'; /* Importa los estilos sass comunes */
 
 function OrangeHeader() {

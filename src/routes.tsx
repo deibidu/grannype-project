@@ -7,42 +7,47 @@ import { Recipes } from './pages/Recipes.tsx';
 import { Home } from './pages/Home.tsx';
 import { Header } from './components/header.tsx';
 import User from './pages/User.tsx';
+import { Login } from './pages/Login.tsx';
 
 export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Login />,
+  },
   {
     path: '/',
     element: <App />,
     children: [
       {
-        path: 'Header',
-        element: <Header />,
+        path: 'Home',
+        element: <Home />,
+      },
+      {
+        path: 'Recipes',
+        element: <Recipes />,
+      },
+      {
+        path: 'CreateRecipe',
+        element: <CreateRecipe />,
+      },
+      {
+        path: 'Calendar',
+        element: <Calendar />,
+      },
+      {
+        path: 'ShoppingList',
+        element: <ShoppingList />,
       },
       {
         path: 'User',
         element: <User />,
       },
       {
-        path: '/',
-        element: <Home />,
+        path: 'Header',
+        element: <Header />,
       },
       {
-        path: '/Recipes',
-        element: <Recipes />,
-      },
-      {
-        path: '/CreateRecipe',
-        element: <CreateRecipe />,
-      },
-      {
-        path: '/Calendar',
-        element: <Calendar />,
-      },
-      {
-        path: '/ShoppingList',
-        element: <ShoppingList />,
-      },
-      {
-        path: '/patterns.tsx',
+        path: 'patterns',
         element: <div>Patterns</div>,
       },
     ],

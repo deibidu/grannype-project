@@ -1,4 +1,7 @@
 @import "../../sass/colors.scss";
+@import "../../sass/fonts.scss";
+@import "../../sass/size-font.scss";
+
 .toolbar {
   display: flex;
   justify-content: center;
@@ -22,4 +25,9 @@
 
 .toolbar-button > svg {
   margin-right: 10px;
+}
+
+.toolbar-label {
+  font-family: $font-text;
+  font-size: $text-small;
 }

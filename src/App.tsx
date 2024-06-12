@@ -13,7 +13,7 @@ export const App = () => {
     <>
       <Header />
       <div>
-        <NavLink to="/"></NavLink>
+        <NavLink to="/Home"></NavLink>
         <NavLink to="/Recipes"></NavLink>
         <NavLink to="/CreateRecipe"></NavLink>
         <NavLink to="/Calendar"></NavLink>

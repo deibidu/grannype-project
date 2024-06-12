@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Select, { SingleValue } from 'react-select';
-import styled from 'styled-components';
 import { CompactPicker } from 'react-color';
 import { FaFillDrip, FaParagraph, FaPalette } from 'react-icons/fa';
 import { BiBorderOuter } from 'react-icons/bi';
@@ -54,8 +53,8 @@ const Toolbar: React.FC<ToolbarProps> = ({
   const [currentColorBorder, setCurrentColorBorder] = useState('#4b4b4b');
   const [currentFontFamilyTitle, setCurrentFontFamilyTitle] = useState('Caprasimo, sans-serif');
   const [currentFontFamilyText, setCurrentFontFamilyText] = useState('Jost, sans-serif');
-  const [currentFontSize, setCurrentFontSize] = useState('16px');
-  const [currentFontSizeTitle, setCurrentFontSizeTitle] = useState('22px');
+  const currentFontSize = useMemo(() => '16px', []);
+  const currentFontSizeTitle = useMemo(() => '22px', []);
   const [selectedBackgroundImage, setSelectedBackgroundImage] = useState(backgroundImageOptions()[0]);
 
   const loadFont = (family: string) => {
@@ -112,6 +111,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
     <div className="toolbar">
       <div className="toolbar-button">
         <PiSelectionBackgroundBold onClick={() => document.getElementById('background-image-input')?.click()} />
+        <label className="toolbar-label">Image Background</label>
         <Select
           options={backgroundImageOptions()}
           value={selectedBackgroundImage}
@@ -120,6 +120,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </div>
       <div className="toolbar-button">
         <BiBorderOuter />
+        <label className="toolbar-label">Color Border</label>
         <CompactPicker
           color={currentColorBorder}
           onChangeComplete={color => {
@@ -130,6 +131,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </div>
       <div className="toolbar-button">
         <FaFillDrip />
+        <label className="toolbar-label">Color Background Container</label>
         <CompactPicker
           color={currentColorBackground}
           onChangeComplete={color => {
@@ -141,6 +143,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
 
       <div className="toolbar-button">
         <FaPalette />
+        <label className="toolbar-label">Color Text</label>
         <CompactPicker
           color={currentColorFont}
           onChangeComplete={color => {
@@ -151,6 +154,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </div>
       <div className="toolbar-button">
         <MdTitle />
+        <label className="toolbar-label">Font Title</label>
         <Select
           value={{ value: currentFontFamilyTitle, label: currentFontFamilyTitle }}
           onChange={handleOnChangeFontFamilyTitle}
@@ -159,6 +163,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </div>
       <div className="toolbar-button">
         <FaParagraph />
+        <label className="toolbar-label">Font Text</label>
         <Select
           value={{ value: currentFontFamilyText, label: currentFontFamilyText }}
           onChange={handleOnChangeFontFamilyText}
@@ -167,6 +172,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </div>
       <div className="toolbar-button">
         <MdFormatSize />
+        <label className="toolbar-label">Size Title</label>
         <Select
           value={{ value: currentFontSizeTitle, label: currentFontSizeTitle }}
           onChange={handleOnChangeFontSizeTitle}
@@ -175,6 +181,7 @@ const Toolbar: React.FC<ToolbarProps> = ({
       </div>
       <div className="toolbar-button">
         <IoMdResize />
+        <label className="toolbar-label">Size Text</label>
         <Select
           value={{ value: currentFontSize, label: currentFontSize }}
           onChange={handleOnChangeFontSize}

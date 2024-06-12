@@ -1,0 +1,70 @@
+@import "../sass/colors.scss";
+@import "../sass/fonts.scss";
+@import "../sass/size-font.scss";
+
+.login-page {
+  background: url(../assets/images/Login-Background-Grannype.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.welcome {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  padding: 48px;
+  width: 100%;
+  background-color: $color-white-creamy;
+  border: 2px solid $color-grey-dust;
+  border-radius: 4px;
+}
+
+.welcome-title {
+  text-align: center;
+  font-family: $font-text;
+  color: $color-grey-dust;
+  line-height: 28px;
+  font-size: $h2;
+  padding: 32px 64px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.welcome-title span {
+  font-size: 72px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(117, 117, 117, 0.636);
+  border: 2px solid $color-orange-neon;
+  border-radius: 4px;
+  row-gap: 26px;
+  padding: 32px;
+  margin: 120px 120px 200px 120px;
+  font-family: $font-text;
+  color: $color-white-creamy;
+}
+
+.slogan {
+  font-size: $h3;
+}
+
+.input-login {
+  border: 1px solid $color-orange-neon;
+  border-radius: 4px;
+  width: 30%;
+  padding: 16px 12px;
+}
+
+.login-btn {
+  display: flex;
+  flex-direction: row;
+  margin: 24px;
+  gap: 10px;
+}

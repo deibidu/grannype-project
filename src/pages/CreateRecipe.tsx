@@ -5,6 +5,7 @@ import { backgroundImageOptions } from '../components/CreateRecipe_Toolbar/Creat
 import { RiImageAddFill } from 'react-icons/ri';
 import './CreateRecipe.scss';
 import { Modal_IMG } from '../components/CreateRecipe_IMG__modal/CreateRecipe_IMG__modal';
+import { useReactToPrint } from 'react-to-print';
 
 interface Recipe {
   title: string;
@@ -14,14 +15,16 @@ interface Recipe {
   notes: string;
 }
 
-const RecipeContainer = styled.div<{
+interface RecipeContainerProps {
   backgroundImage: string;
   borderColor: string;
   fontColor: string;
   fontSize: string;
   fontFamilyTitle: string;
   fontFamilyText: string;
-}>`
+}
+
+const RecipeContainer = styled.div<RecipeContainerProps>`
   background-image: url(${props => props.backgroundImage});
   background-position: center;
   background-repeat: no-repeat;
@@ -44,7 +47,6 @@ const RecipeContainer = styled.div<{
     font-family: ${props => props.fontFamilyTitle};
   }
 `;
-
 const TitleFont = styled.h3<{ fontFamilyTitle: string; fontSizeTitle: string }>`
   font-family: ${props => props.fontFamilyTitle};
   font-size: ${props => props.fontSizeTitle};
@@ -119,8 +121,20 @@ export const CreateRecipe: React.FC = () => {
   const [items, setItems] = useState<{ id: string; value: string }[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [showInput, setShowInput] = useState(false);
-
   const backgroundImageUrl = currentBackgroundImage;
+
+  // Imprimir el container
+
+  const handlePrint = useReactToPrint({
+    content: () => {
+      const container = document.getElementById('print-container');
+      const fileInputs = container.querySelectorAll('input[type="file"]');
+      fileInputs.forEach(input => input.remove());
+      const wrapper = document.createElement('div');
+      wrapper.appendChild(container.cloneNode(true));
+      return wrapper;
+    },
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -198,189 +212,191 @@ export const CreateRecipe: React.FC = () => {
         setFontFamilyText={setCurrentFontFamilyText}
         setBackgroundImage={setCurrentBackgroundImage}
       />
-      <RecipeContainer
-        borderColor={borderColor}
-        fontColor={fontColor}
-        fontSize={fontSize}
-        fontFamilyTitle={currentFontFamilyTitle}
-        fontFamilyText={currentFontFamilyText}
-        backgroundImage={backgroundImageUrl}
-      >
-        <SectionContainer
-          backgroundColor={backgroundColor}
+      <div id="print-container">
+        <RecipeContainer
+          borderColor={borderColor}
           fontColor={fontColor}
           fontSize={fontSize}
+          fontFamilyTitle={currentFontFamilyTitle}
           fontFamilyText={currentFontFamilyText}
-          style={{ padding: 0 }}
+          backgroundImage={backgroundImageUrl}
         >
-          <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
-            <input
-              className="createrecipe-inputMealTitle"
-              placeholder="Your meal title"
-              value={recipe.title}
-              onChange={handleInputChange}
-              name="title"
-              style={{
-                backgroundColor,
-                color: fontColor,
-                fontSize: fontSizeTitle,
-                fontFamily: currentFontFamilyTitle,
-              }}
-            />
-          </TitleFont>
-        </SectionContainer>
-
-        <div className="createrecipe-ingedientsAndImage">
           <SectionContainer
             backgroundColor={backgroundColor}
             fontColor={fontColor}
             fontSize={fontSize}
             fontFamilyText={currentFontFamilyText}
-            className="cr-image"
+            style={{ padding: 0 }}
           >
-            <ImageContainer>
-              {imageUrl || selectedImage ? (
-                <>
-                  <Image src={imageUrl || selectedImage} alt="recipe-image" />
-                  <ImageOverlay>
-                    <button onClick={handleOpenModal}>Choose from API</button>
-                    <label htmlFor="localImageUpload">
-                      <input
-                        type="file"
-                        id="localImageUpload"
-                        style={{ display: 'none' }}
-                        onChange={handleImageChange}
-                      />
-                      Choose from Local
-                    </label>
-                  </ImageOverlay>
-                </>
-              ) : (
-                <div>
-                  <RiImageAddFill size={50} />
-                  <input type="file" onChange={handleImageChange} />
-                  <button onClick={handleOpenModal}>Search image</button>
-                </div>
-              )}
-            </ImageContainer>
-            {isOpen && <Modal_IMG onClose={handleModalClose} onSelectImage={handleSelectImage} isOpen={isOpen} />}
+            <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
+              <input
+                className="createrecipe-inputMealTitle"
+                placeholder="Your meal title"
+                value={recipe.title}
+                onChange={handleInputChange}
+                name="title"
+                style={{
+                  backgroundColor,
+                  color: fontColor,
+                  fontSize: fontSizeTitle,
+                  fontFamily: currentFontFamilyTitle,
+                }}
+              />
+            </TitleFont>
           </SectionContainer>
 
-          <SectionContainer
-            backgroundColor={backgroundColor}
-            fontColor={fontColor}
-            fontSize={fontSize}
-            fontFamilyText={currentFontFamilyText}
-            className="cr-ingredients"
-          >
-            <div className="cr-ingredients__title" onClick={() => setShowInput(true)}>
-              <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
-                <h3 style={{ color: fontColor, fontSize: fontSizeTitle, fontFamily: currentFontFamilyTitle }}>
-                  Ingredients
-                </h3>
-              </TitleFont>
-            </div>
-            <div className="cr-ingredients__list">
-              <ul className="cr-ingredients__ul">
-                {items.map(item => (
-                  <li className="cr-ingredients__item cr-ingred-itemcontainer" style={{}} key={item.id}>
-                    <TextFont fontFamilyText={currentFontFamilyText}>{item.value}</TextFont>
-                    <button className="button__secondary-grey delete_btn" onClick={() => handleRemove(item.id)}>
-                      -
+          <div className="createrecipe-ingedientsAndImage">
+            <SectionContainer
+              backgroundColor={backgroundColor}
+              fontColor={fontColor}
+              fontSize={fontSize}
+              fontFamilyText={currentFontFamilyText}
+              className="cr-image"
+            >
+              <ImageContainer>
+                {imageUrl || selectedImage ? (
+                  <>
+                    <Image src={imageUrl || selectedImage} alt="recipe-image" />
+                    <ImageOverlay>
+                      <button onClick={handleOpenModal}>Choose from API</button>
+                      <label htmlFor="localImageUpload">
+                        <input
+                          type="file"
+                          id="localImageUpload"
+                          style={{ display: 'none' }}
+                          onChange={handleImageChange}
+                        />
+                        Choose from Local
+                      </label>
+                    </ImageOverlay>
+                  </>
+                ) : (
+                  <div>
+                    <RiImageAddFill size={50} />
+                    <input type="file" onChange={handleImageChange} />
+                    <button onClick={handleOpenModal}>Search image</button>
+                  </div>
+                )}
+              </ImageContainer>
+              {isOpen && <Modal_IMG onClose={handleModalClose} onSelectImage={handleSelectImage} isOpen={isOpen} />}
+            </SectionContainer>
+
+            <SectionContainer
+              backgroundColor={backgroundColor}
+              fontColor={fontColor}
+              fontSize={fontSize}
+              fontFamilyText={currentFontFamilyText}
+              className="cr-ingredients"
+            >
+              <div className="cr-ingredients__title" onClick={() => setShowInput(true)}>
+                <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
+                  <h3 style={{ color: fontColor, fontSize: fontSizeTitle, fontFamily: currentFontFamilyTitle }}>
+                    Ingredients
+                  </h3>
+                </TitleFont>
+              </div>
+              <div className="cr-ingredients__list">
+                <ul className="cr-ingredients__ul">
+                  {items.map(item => (
+                    <li className="cr-ingredients__item cr-ingred-itemcontainer" style={{}} key={item.id}>
+                      <TextFont fontFamilyText={currentFontFamilyText}>{item.value}</TextFont>
+                      <button className="button__secondary-grey delete_btn" onClick={() => handleRemove(item.id)}>
+                        -
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                {showInput && (
+                  <div className="cr-ingredients__input">
+                    <input
+                      type="text"
+                      value={inputValue}
+                      onChange={e => setInputValue(e.target.value)}
+                      style={{ color: fontColor, fontSize, fontFamily: currentFontFamilyText }}
+                      onClick={e => e.stopPropagation()}
+                    />
+                    <button className="button__secondary-grey" type="button" onClick={handleAddIngredient}>
+                      Add
                     </button>
-                  </li>
-                ))}
-              </ul>
-              {showInput && (
-                <div className="cr-ingredients__input">
-                  <input
-                    type="text"
-                    value={inputValue}
-                    onChange={e => setInputValue(e.target.value)}
-                    style={{ color: fontColor, fontSize, fontFamily: currentFontFamilyText }}
-                    onClick={e => e.stopPropagation()}
-                  />
-                  <button className="button__secondary-grey" type="button" onClick={handleAddIngredient}>
-                    Add
-                  </button>
-                </div>
-              )}
-            </div>
-          </SectionContainer>
-        </div>
+                  </div>
+                )}
+              </div>
+            </SectionContainer>
+          </div>
 
-        <SectionContainer
-          backgroundColor={backgroundColor}
-          fontColor={fontColor}
-          fontSize={fontSize}
-          fontFamilyText={currentFontFamilyText}
-          className="createrecipe-preparation"
-        >
-          <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
-            <h3 style={{ color: fontColor, fontSize: fontSizeTitle, fontFamily: currentFontFamilyTitle }}>
-              Preparation
-            </h3>
-          </TitleFont>
-          <TextFont fontFamilyText={currentFontFamilyText}>
-            <textarea
-              className="cr-steps"
-              placeholder="Introduce the steps"
-              value={recipe.steps}
-              onChange={handleInputChange}
-              name="steps"
-              style={{
-                fontFamily: currentFontFamilyText,
-                backgroundColor,
-                color: fontColor,
-                fontSize,
-                width: '100%',
-                border: 'none',
-                boxSizing: 'border-box',
-                minHeight: '100px',
-                padding: '10px',
-                resize: 'vertical',
-                overflow: 'auto',
-              }}
-            />
-          </TextFont>
-        </SectionContainer>
-        <SectionContainer
-          backgroundColor={backgroundColor}
-          fontColor={fontColor}
-          fontSize={fontSize}
-          fontFamilyText={currentFontFamilyText}
-          className="createrecipe-notes"
-        >
-          <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
-            <h3 style={{ color: fontColor, fontSize: fontSizeTitle, fontFamily: currentFontFamilyTitle }}>Notes</h3>
-          </TitleFont>
-          <TextFont fontFamilyText={currentFontFamilyText}>
-            <textarea
-              id="cr-notes"
-              className="cr-notes"
-              placeholder="Any notes?"
-              value={recipe.notes}
-              onChange={handleInputChange}
-              name="notes"
-              style={{
-                fontFamily: currentFontFamilyText,
-                backgroundColor,
-                color: fontColor,
-                fontSize,
-                width: '100%',
-                border: 'none',
-                boxSizing: 'border-box',
-                minHeight: '100px',
-                padding: '10px',
-                resize: 'vertical',
-                overflow: 'auto',
-              }}
-            />
-          </TextFont>
-        </SectionContainer>
-      </RecipeContainer>
+          <SectionContainer
+            backgroundColor={backgroundColor}
+            fontColor={fontColor}
+            fontSize={fontSize}
+            fontFamilyText={currentFontFamilyText}
+            className="createrecipe-preparation"
+          >
+            <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
+              <h3 style={{ color: fontColor, fontSize: fontSizeTitle, fontFamily: currentFontFamilyTitle }}>
+                Preparation
+              </h3>
+            </TitleFont>
+            <TextFont fontFamilyText={currentFontFamilyText}>
+              <textarea
+                className="cr-steps"
+                placeholder="Introduce the steps"
+                value={recipe.steps}
+                onChange={handleInputChange}
+                name="steps"
+                style={{
+                  fontFamily: currentFontFamilyText,
+                  backgroundColor,
+                  color: fontColor,
+                  fontSize,
+                  width: '100%',
+                  border: 'none',
+                  boxSizing: 'border-box',
+                  minHeight: '100px',
+                  padding: '10px',
+                  resize: 'none',
+                  overflow: 'auto',
+                }}
+              />
+            </TextFont>
+          </SectionContainer>
+          <SectionContainer
+            backgroundColor={backgroundColor}
+            fontColor={fontColor}
+            fontSize={fontSize}
+            fontFamilyText={currentFontFamilyText}
+            className="createrecipe-notes"
+          >
+            <TitleFont fontFamilyTitle={currentFontFamilyTitle} fontSizeTitle={fontSizeTitle}>
+              <h3 style={{ color: fontColor, fontSize: fontSizeTitle, fontFamily: currentFontFamilyTitle }}>Notes</h3>
+            </TitleFont>
+            <TextFont fontFamilyText={currentFontFamilyText}>
+              <textarea
+                id="cr-notes"
+                className="cr-notes"
+                placeholder="Any notes?"
+                value={recipe.notes}
+                onChange={handleInputChange}
+                name="notes"
+                style={{
+                  fontFamily: currentFontFamilyText,
+                  backgroundColor,
+                  color: fontColor,
+                  fontSize,
+                  width: '100%',
+                  border: 'none',
+                  boxSizing: 'border-box',
+                  minHeight: '100px',
+                  padding: '10px',
+                  resize: 'none',
+                  overflow: 'hidden',
+                }}
+              />
+            </TextFont>
+          </SectionContainer>
+        </RecipeContainer>
+      </div>
       <div className="cr-selection-btns">
-        <button className="button__secondary-green" type="button">
+        <button className="button__secondary-green" type="button" onClick={handlePrint}>
           Print
         </button>
         <button className="button__primary-green" type="button">

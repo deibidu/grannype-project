@@ -1,4 +1,3 @@
-import React from 'react';
 import '../sass/fonts.scss';
 import '../components/footer.scss';
 

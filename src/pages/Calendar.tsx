@@ -7,8 +7,24 @@ import { EventInput } from '@fullcalendar/core/index.js';
 import './Calendar.scss';
 
 export function Calendar() {
+  const today = new Date();
+  const formattedToday = today.toISOString().split('T')[0];
   const [isOpen, setIsOpen] = useState(false);
-  const [events, setEvents] = useState<EventInput[]>([]);
+  const [events, setEvents] = useState<EventInput[]>([
+    {
+      title: ' Gachas con Arándanos',
+      start: formattedToday,
+      end: formattedToday,
+      fixed: true,
+    },
+    {
+      title: ' Lasaña',
+      start: formattedToday,
+      end: formattedToday,
+      fixed: true,
+    },
+  ]);
+
   const [selectedEvent, setSelectedEvent] = useState<EventInput | null>(null);
 
   const handleAddEvent = () => {
@@ -56,26 +72,33 @@ export function Calendar() {
 
   return (
     <>
-      <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        locale="en"
-        height={800}
-        events={events}
-        selectable={true}
-        dateClick={handleAddEvent}
-        eventClick={handleEventClick}
-      />
-
-      {isOpen && (
-        <AddEventModal
-          isOpen={isOpen}
-          onClose={handleModalClose}
-          onAddEvent={handleModalSubmit}
-          onDeleteEvent={handleDeleteEvent}
-          selectedEvent={selectedEvent}
+      <div className="Calendar-container">
+        <FullCalendar
+          plugins={[dayGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          locale="en"
+          height={800}
+          events={events}
+          selectable={true}
+          dateClick={handleAddEvent}
+          eventClick={handleEventClick}
+          headerToolbar={{
+            left: 'prev',
+            center: 'title',
+            right: 'next',
+          }}
         />
-      )}
+
+        {isOpen && (
+          <AddEventModal
+            isOpen={isOpen}
+            onClose={handleModalClose}
+            onAddEvent={handleModalSubmit}
+            onDeleteEvent={handleDeleteEvent}
+            selectedEvent={selectedEvent}
+          />
+        )}
+      </div>
     </>
   );
 }

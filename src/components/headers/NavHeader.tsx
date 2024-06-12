@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './NavHeader.scss';
 import { MenuIconGrey } from '../icons/MenuIconGrey';
@@ -10,7 +9,7 @@ import { CompraIconGrey } from '../icons/CompraIconGrey';
 function NavHeader() {
   return (
     <div className="section-header">
-      <NavLink to="/" className={({ isActive }) => `nav-link orange-nav ${isActive ? 'orange-nav--active' : ''}`}>
+      <NavLink to="/Home" className={({ isActive }) => `nav-link orange-nav ${isActive ? 'orange-nav--active' : ''}`}>
         <MenuIconGrey className="icon" />
         <p className="section-name">Menu</p>
       </NavLink>

@@ -19,7 +19,7 @@ interface UrlFromApi {
 export function Modal_IMG({ isOpen, onClose, onSelectImage }: ModalIMGProps) {
   const [urlsToDisplay, setUrlsToDisplay] = useState<UrlFromApi[] | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const setIsLoading = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {

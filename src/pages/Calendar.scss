@@ -9,7 +9,7 @@
 .calendar-container {
   display: block;
   justify-content: center;
-  width: 12rem;
+
   margin: 40px;
   padding: 10px;
   border: 0.1rem solid $color-blue-vinyl;
@@ -23,6 +23,10 @@
   margin: 4rem;
 }
 
+.fc-event {
+  font-family: $font-text;
+}
+
 .fc-col-header-cell-cushion {
   display: inline-block;
   padding: 2px 4px;
@@ -32,20 +36,53 @@
 }
 .fc-header-toolbar,
 .fc-toolbar {
-  margin: 2rem 4rem;
+  margin: 2rem 4rem 0 4rem;
 }
 
 .fc-toolbar-title {
   font-family: $font-title;
-  color: $color-blue-vinyl;
+  color: $color-white-creamy;
 }
 
 .fc-button-primary {
-  font-family: $font-text !important;
+  font-family: $font-title !important;
   background-color: $color-blue-vinyl !important;
   border: none !important;
 }
 
+.fc-header-toolbar {
+  margin-top: 4rem;
+  left: 0;
+  margin-bottom: 0;
+  background-color: $color-blue-vinyl;
+  padding: 10px;
+  border-radius: 12px 12px 0 0;
+}
+
+.fc-dayGridMonth-view,
+.fc-view,
+.fc-daygrid {
+  margin: 0 4rem 6rem 4rem;
+}
+.fc-toolbar-chunk {
+  display: flex;
+  align-items: center;
+}
+
+.fc-toolbar-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.fc-prev-button,
+.fc-next-button {
+  margin: 0 10px;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 0;
+}
 .calendar-header {
   display: flex;
   justify-content: space-between;
@@ -77,6 +114,8 @@
   font-family: $font-title;
   color: $color-blue-vinyl;
   font-size: x-large;
+  font-family: $font-title;
+  height: 55px;
 }
 
 .day {
