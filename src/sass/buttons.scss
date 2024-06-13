@@ -2,15 +2,6 @@
 @import "./fonts.scss";
 @import "./size-font.scss";
 
-/*
-html {
-    <button class="button__primary-COLOR">
-        <img src="./assets/images" alt="Arrow" class="icon">
-    <span class="text">TEXT</span>
-    </button>
-}
-*/
-/*Botón primario: relleno de un color main con tipografía en $color-white-creamy*/
 .button__primary-orange {
   display: inline-flex;
   align-items: center;

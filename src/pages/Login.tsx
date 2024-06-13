@@ -2,11 +2,12 @@ import './Login.scss';
 import '../sass/colors.scss';
 import { useNavigate } from 'react-router-dom';
 import { Footer } from '../components/footer';
+import { FormEvent } from 'react';
 
 export const Login = () => {
   const navigate = useNavigate();
 
-  const handleLogin = event => {
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     navigate('Home');
   };

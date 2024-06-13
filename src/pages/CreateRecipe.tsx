@@ -115,7 +115,7 @@ export const CreateRecipe: React.FC = () => {
   const [fontSize, setFontSize] = useState('16px');
   const [fontSizeTitle, setFontSizeTitle] = useState('22px');
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
-  const [image, setImage] = useState<File | null>(null);
+  const [selectedLocalImage, setSelectedLocalImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
   const [isOpen, setIsOpen] = useState(false);
   const [items, setItems] = useState<{ id: string; value: string }[]>([]);
@@ -128,6 +128,10 @@ export const CreateRecipe: React.FC = () => {
   const handlePrint = useReactToPrint({
     content: () => {
       const container = document.getElementById('print-container');
+      if (!container) {
+        console.error("No se encontró el elemento del 'print-container'");
+        return null;
+      }
       const fileInputs = container.querySelectorAll('input[type="file"]');
       fileInputs.forEach(input => input.remove());
       const wrapper = document.createElement('div');
@@ -144,7 +148,7 @@ export const CreateRecipe: React.FC = () => {
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setImage(file);
+      setSelectedLocalImage(file);
       const reader = new FileReader();
       reader.onload = () => {
         setImageUrl(reader.result as string);
@@ -156,7 +160,7 @@ export const CreateRecipe: React.FC = () => {
 
   const handleSelectImage = (imageUrl: string) => {
     setSelectedImage(imageUrl);
-    setImage(null); // Clear local image when an API image is chosen
+    setSelectedLocalImage(null); // Clear local image when an API image is chosen
     setImageUrl(undefined); // Clear imageUrl when an API image is chosen
     handleModalClose();
   };

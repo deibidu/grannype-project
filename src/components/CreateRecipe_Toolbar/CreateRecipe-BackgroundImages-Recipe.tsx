@@ -51,7 +51,12 @@ export function BackgroundImageSelect({
   return (
     <select
       value={selectedOption.value}
-      onChange={e => onChange(options.find(option => option.value === e.target.value))}
+      onChange={e => {
+        const selectedOption = options.find(option => option.value === e.target.value);
+        if (selectedOption) {
+          onChange(selectedOption);
+        }
+      }}
     >
       {options.map(option => (
         <option key={option.value} value={option.value}>

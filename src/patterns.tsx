@@ -1,17 +1,13 @@
-import React from "react";
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface PatternsProps {
   children: ReactNode;
 }
-import MainWrapper from "./wrapper/main-wrapper";
+
+import MainWrapper from './wrapper/main-wrapper';
 
 export const Patterns = ({ children }: PatternsProps) => {
-  return (
-    <MainWrapper>
-      <div>{children}</div>
-    </MainWrapper>
-  );
+  return <MainWrapper>{children}</MainWrapper>;
 };
 
 export default Patterns;

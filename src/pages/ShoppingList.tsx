@@ -3,7 +3,7 @@ import './ShoppingList.scss';
 import '../sass/buttons.scss';
 
 export function ShoppingList() {
-  const [items, setItems] = useState([
+  const [items, setItems] = React.useState([
     { id: '1', value: 'Tomate', checked: false },
     { id: '2', value: 'Aceite', checked: false },
     { id: '3', value: 'Patatas', checked: false },

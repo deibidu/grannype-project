@@ -1,15 +1,16 @@
 import React from 'react';
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
-import { Outlet } from 'react-router-dom';
 
-const MainWrapper = (): React.ReactNode => {
+interface MainWrapperProps {
+  children: React.ReactNode;
+}
+
+const MainWrapper: React.FC<MainWrapperProps> = ({ children }) => {
   return (
     <div className="card">
       <Header></Header>
-      <div className={'main'}>
-        <Outlet />
-      </div>
+      <div className={'main'}>{children}</div>
       <Footer></Footer>
     </div>
   );

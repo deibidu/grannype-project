@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import '../sass/colors.scss';
 import '../sass/fonts.scss';
 import '../pages/Recipes.scss';
@@ -10,42 +10,40 @@ import examplePhotoRecipe3 from '../assets/images/examplePhotoRecipe3.jpg';
 
 export function Recipes() {
   const [search, setSearch] = useState('');
-  const [suggestions, setSuggestions] = useState(['Aceite', 'Cebolla', 'Patata', 'Arroz', 'Huevo', 'Garbanzos']);
   const [showSearch, setShowSearch] = useState(false);
-  const [recipes, setRecipes] = useState([
-    { id: 1, name: 'Ensalada César con aguacate', image: examplePhotoRecipe1 },
-    { id: 2, name: 'Tortitas con nata y fresas', image: examplePhotorecipe2 },
-    { id: 3, name: 'Especias caseras', image: examplePhotoRecipe3 },
-  ]);
-  const [newRecipeName, setNewRecipeName] = useState('');
-  const [newRecipeContent, setNewRecipeContent] = useState('');
+  //  const newRecipeName = useMemo(() => '', []);
 
-  function handleSearch(event) {
-    if (event.key === 'Enter') {
-      setSearch(event.target.value);
+  const suggestions = useMemo(() => ['Aceite', 'Cebolla', 'Patata', 'Arroz', 'Huevo', 'Garbanzos'], []);
+  const recipes = useMemo(
+    () => [
+      { id: 1, name: 'Ensalada César con aguacate', image: examplePhotoRecipe1 },
+      { id: 2, name: 'Tortitas con nata y fresas', image: examplePhotorecipe2 },
+      { id: 3, name: 'Especias caseras', image: examplePhotoRecipe3 },
+    ],
+    [],
+  );
+
+  function handleSearch(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter' && event.target) {
+      setSearch((event.target as HTMLInputElement).value);
     }
   }
 
-  function handleSuggestClick(suggest) {
+  function handleSuggestClick(suggest: string) {
     setSearch(suggest);
     setShowSearch(true);
   }
 
-  function handleSearchButtonClick() {
-    setSearch(newRecipeName);
-  }
+  // function handleSearchButtonClick() {
+  //   setSearch(newRecipeName);
+  // }
 
-  /* FUNCIONES PARA CUANDO ESTÉN LAS RECETAS HECHAS Y PUEDAS EDITARLAS O ELIMINARLAS
-    function handleEditRecipe(id) { }
-  
-    function handleDeleteRecipe(id) {
-      const updatedRecipes = recipes.filter(recipe => recipe.id !== id);
-      setRecipes(updatedRecipes);
+  const filteredRecipes = useMemo(() => {
+    if (search) {
+      return recipes.filter(recipe => recipe.name.toLowerCase().includes(search.toLowerCase()));
     }
-  */
-  const filteredRecipes = search
-    ? recipes.filter(recipe => recipe.name.toLowerCase().includes(search.toLowerCase()))
-    : recipes;
+    return recipes;
+  }, [search, recipes]);
 
   return (
     <div className="recipes-container">
@@ -81,7 +79,7 @@ export function Recipes() {
             </div>
           ))
         ) : (
-          <p>No se encuentra ninguna receta</p>
+          <p>There's no recipes</p>
         )}
       </div>
     </div>
