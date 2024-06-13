@@ -25,6 +25,7 @@ export function Modal_IMG({ isOpen, onClose, onSelectImage }: ModalIMGProps) {
   useEffect(() => {
     async function getInitialImages() {
       try {
+        setIsLoading(true);
         const apiKey = 'gcAJ2aoKrLKDnGh66xuMHMr11t_lVUYfk49uhZ-gpEs';
         const resp = await axios.get(
           `https://api.unsplash.com/search/photos?client_id=${apiKey}&query=food&per_page=15`,
@@ -32,6 +33,9 @@ export function Modal_IMG({ isOpen, onClose, onSelectImage }: ModalIMGProps) {
         setUrlsToDisplay(resp.data.results);
       } catch (e) {
         console.log(e);
+        setError('Oops! Something is wrong... Please, try later');
+      } finally {
+        setIsLoading(false);
       }
     }
     getInitialImages();
@@ -39,6 +43,7 @@ export function Modal_IMG({ isOpen, onClose, onSelectImage }: ModalIMGProps) {
 
   const handleSearchImage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     try {
       setError('');
       setIsLoading(true);
@@ -52,8 +57,9 @@ export function Modal_IMG({ isOpen, onClose, onSelectImage }: ModalIMGProps) {
     } catch (e) {
       console.log(e);
       setError('Oops! Something is wrong... Please, try later');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const handleCloseModal = () => {
@@ -76,8 +82,8 @@ export function Modal_IMG({ isOpen, onClose, onSelectImage }: ModalIMGProps) {
           placeholder="Search here"
         />
         <div className="modal-btn-div">
-          <button className="button__primary-grey" type="submit">
-            Search
+          <button className="button__primary-grey" type="submit" disabled={isLoading}>
+            {isLoading ? 'Loading...' : 'Search'}
           </button>
           <button className="button__secondary-grey" type="button" onClick={handleCloseModal}>
             Cancel
@@ -86,20 +92,20 @@ export function Modal_IMG({ isOpen, onClose, onSelectImage }: ModalIMGProps) {
       </form>
       {error && (
         <div>
-          <img src={ErrorImage} />
+          <img src={ErrorImage} alt="Error" />
           {error}
         </div>
       )}
-      {urlsToDisplay == null ? (
+      {isLoading ? (
         <div>Loading...</div>
       ) : (
         <div>
-          {urlsToDisplay.length === 0 ? (
+          {urlsToDisplay?.length === 0 ? (
             <div>
               <span>No results</span>
             </div>
           ) : (
-            urlsToDisplay.map((url, index) => (
+            urlsToDisplay?.map((url, index) => (
               <img
                 key={index}
                 src={url.urls.small}

@@ -118,6 +118,7 @@ export const CreateRecipe: React.FC = () => {
   const [selectedLocalImage, setSelectedLocalImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [items, setItems] = useState<{ id: string; value: string }[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [showInput, setShowInput] = useState(false);
@@ -148,11 +149,13 @@ export const CreateRecipe: React.FC = () => {
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      setIsLoading(true);
       setSelectedLocalImage(file);
       const reader = new FileReader();
       reader.onload = () => {
         setImageUrl(reader.result as string);
         setSelectedImage(undefined); // Clear selectedImage when a local image is chosen
+        setIsLoading(false);
       };
       reader.readAsDataURL(file);
     }
@@ -258,7 +261,9 @@ export const CreateRecipe: React.FC = () => {
               className="cr-image"
             >
               <ImageContainer>
-                {imageUrl || selectedImage ? (
+                {isLoading ? (
+                  <div>Loading...</div>
+                ) : imageUrl || selectedImage ? (
                   <>
                     <Image src={imageUrl || selectedImage} alt="recipe-image" />
                     <ImageOverlay>
@@ -282,6 +287,7 @@ export const CreateRecipe: React.FC = () => {
                   </div>
                 )}
               </ImageContainer>
+              {selectedLocalImage && <p>Local image selected: {selectedLocalImage.name}</p>}
               {isOpen && <Modal_IMG onClose={handleModalClose} onSelectImage={handleSelectImage} isOpen={isOpen} />}
             </SectionContainer>
 
