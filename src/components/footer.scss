@@ -17,3 +17,21 @@
   padding: 2rem;
   min-height: 100vh;
 }
+
+// Responsive
+
+$layout-breakpoint-700: 700px;
+
+@media (max-width: #{$layout-breakpoint-700}) {
+  .footer {
+    font-size: 14px;
+  }
+}
+
+$layout-breakpoint-540: 540px;
+
+@media (max-width: #{$layout-breakpoint-540}) {
+  .footer {
+    font-size: 12px;
+  }
+}

@@ -1,5 +1,6 @@
 @import "../../sass/fonts.scss";
 @import "../../sass/colors.scss";
+@import "../../sass/size-font.scss";
 
 .section-header {
   display: flex;
@@ -94,5 +95,44 @@
 
   .section-name {
     font-size: 14px;
+  }
+}
+
+// Responsive
+
+$layout-breakpoint-768: 768px;
+
+@media (max-width: #{$layout-breakpoint-768}) {
+  a.nav-link p.section-name {
+    font-size: 12px;
+  }
+}
+
+$layout-breakpoint-700: 700px;
+
+@media (max-width: #{$layout-breakpoint-700}) {
+  a.nav-link p.section-name {
+    font-size: 10px;
+  }
+  a.nav-link .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+  }
+}
+
+$layout-breakpoint-540: 540px;
+
+@media (max-width: #{$layout-breakpoint-540}) {
+  a.nav-link p.section-name {
+    font-size: 10px;
+  }
+  a.nav-link .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .section-header a.nav-link {
+    flex-direction: column;
   }
 }

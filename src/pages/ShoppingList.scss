@@ -1,5 +1,6 @@
 @import "../sass/colors.scss";
 @import "../sass/fonts.scss";
+@import "../sass/size-font.scss";
 
 .shoppingList {
   display: flex;
@@ -36,7 +37,7 @@
 }
 
 .inputShoppingListContainer {
-  padding: 16px 20px;
+  padding: 12px;
   background-color: $color-white-creamy;
   border: solid 1px;
   border-radius: 8px 0 0 8px;
@@ -46,7 +47,7 @@
 .insertItem {
   display: flex;
   flex-direction: row;
-  margin: 10px;
+  margin: 12px;
 }
 
 .shoppingList-li {
@@ -56,8 +57,10 @@
 
 .shoppingList-ul {
   display: flex;
+  justify-content: left;
   flex-direction: column;
-  justify-content: space-between;
+  padding-left: 0;
+  gap: 10px;
 }
 
 input[type="checkbox"] {
@@ -66,4 +69,51 @@ input[type="checkbox"] {
 
 .delete_btn {
   margin-left: 10px;
+}
+
+// Responsive
+
+$layout-breakpoint-768: 768px;
+
+@media (max-width: #{$layout-breakpoint-768}) {
+  .font-title-sections {
+    font-size: $h3;
+  }
+}
+
+$layout-breakpoint-700: 700px;
+
+@media (max-width: #{$layout-breakpoint-700}) {
+  .font-title-sections {
+    font-size: $p;
+  }
+  h3.font-title {
+    font-size: $p;
+  }
+  .shoppingList-li {
+    font-size: 14px;
+  }
+  .shoppingListContainer {
+    row-gap: 2rem;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+}
+
+$layout-breakpoint-540: 540px;
+
+@media (max-width: #{$layout-breakpoint-540}) {
+  .font-title-sections {
+    font-size: $text-small;
+  }
+  .Shoppinglist_title {
+    padding: 12px 32px;
+  }
+  .shoppingListContainer {
+    padding: 12px 32px;
+    padding-top: 0;
+  }
+  .inputShoppingListContainer {
+    padding: 10px;
+  }
 }

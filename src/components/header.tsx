@@ -20,7 +20,7 @@ export const Header = () => {
               alignItems: 'center',
             }}
           >
-            <p className="font-title">Welcome, David</p>
+            <p className="user-font-title">Welcome, David</p>
             <img src={UserIconCreamy} alt="Ícono de Usuario" className="user-icon" />
           </Link>
         </div>
