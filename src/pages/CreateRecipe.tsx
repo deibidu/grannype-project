@@ -24,6 +24,13 @@ interface RecipeContainerProps {
   fontFamilyText: string;
 }
 
+const theme = {
+  breakpoints: {
+    md: '@media (max-width: 950px)',
+    sm: '@media (max-width: 650px)',
+  },
+};
+
 const RecipeContainer = styled.div<RecipeContainerProps>`
   background-image: url(${props => props.backgroundImage});
   background-position: center;
@@ -46,7 +53,17 @@ const RecipeContainer = styled.div<RecipeContainerProps>`
   h6 {
     font-family: ${props => props.fontFamilyTitle};
   }
+
+  ${theme.breakpoints.md} {
+    width: 80%;
+    padding: 28px;
+  }
+  ${theme.breakpoints.sm} {
+    width: 70%;
+    padding: 20px;
+  }
 `;
+
 const TitleFont = styled.h3<{ fontFamilyTitle: string; fontSizeTitle: string }>`
   font-family: ${props => props.fontFamilyTitle};
   font-size: ${props => props.fontSizeTitle};
@@ -221,6 +238,7 @@ export const CreateRecipe: React.FC = () => {
       />
       <div id="print-container">
         <RecipeContainer
+          className="RecipeContainer"
           borderColor={borderColor}
           fontColor={fontColor}
           fontSize={fontSize}
@@ -287,7 +305,9 @@ export const CreateRecipe: React.FC = () => {
                   </div>
                 )}
               </ImageContainer>
-              {selectedLocalImage && <p>Local image selected: {selectedLocalImage.name}</p>}
+              {selectedLocalImage && (
+                <p style={{ color: backgroundColor }}>Local image selected: {selectedLocalImage.name}</p>
+              )}
               {isOpen && <Modal_IMG onClose={handleModalClose} onSelectImage={handleSelectImage} isOpen={isOpen} />}
             </SectionContainer>
 

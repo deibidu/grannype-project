@@ -31,3 +31,19 @@
   font-family: $font-text;
   font-size: $text-small;
 }
+
+// Responsive
+
+$layout-breakpoint-1270: 1270px;
+
+@media (max-width: #{$layout-breakpoint-1270}) {
+  .toolbar {
+    justify-content: flex-start;
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+  .toolbar-button {
+    display: flex;
+    flex-direction: column;
+  }
+}

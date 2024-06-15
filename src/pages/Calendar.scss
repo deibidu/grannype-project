@@ -1,19 +1,10 @@
 @import "../sass/colors.scss";
 @import "../sass/fonts.scss";
+@import "../sass/size-font.scss";
 
 :root {
   --fc-list-event-dot-width: 10px;
   --fc-list-event-hover-bg-color: $color-white-creamy;
-}
-
-.calendar-container {
-  display: block;
-  justify-content: center;
-
-  margin: 40px;
-  padding: 10px;
-  border: 0.1rem solid $color-blue-vinyl;
-  border-radius: 10px;
 }
 
 .fc-dayGridMonth-view,
@@ -62,7 +53,7 @@
 .fc-dayGridMonth-view,
 .fc-view,
 .fc-daygrid {
-  margin: 0 4rem 6rem 4rem;
+  margin: 0 64px 96px 64px;
 }
 .fc-toolbar-chunk {
   display: flex;
@@ -188,4 +179,48 @@
 
 .close-modal {
   cursor: pointer;
+}
+
+// Responsive
+
+$layout-breakpoint-700: 700px;
+
+@media (max-width: #{$layout-breakpoint-700}) {
+  .fc .fc-toolbar-title {
+    font-size: $p;
+  }
+  .fc-daygrid-day-number {
+    font-size: $text-small;
+  }
+  .fc-event-title .fc-sticky {
+    font-size: 12px;
+  }
+  .fc .fc-daygrid-day-number {
+    padding: 0;
+  }
+  .fc-scrollgrid-sync-inner {
+    font-size: $text-small;
+  }
+}
+
+$layout-breakpoint-600: 600px;
+
+@media (max-width: #{$layout-breakpoint-600}) {
+  .fc-daygrid-day-number {
+    font-size: 14px;
+  }
+  .fc .fc-view-harness {
+    width: 100%;
+  }
+  table.fc-col-header {
+    width: 100%;
+  }
+  .fc .fc-toolbar.fc-header-toolbar {
+    margin: 24px 24px 0 24px;
+  }
+  .fc-dayGridMonth-view,
+  .fc-view,
+  .fc-daygrid {
+    margin: 0 24px 64px 24px;
+  }
 }
