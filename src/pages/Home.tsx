@@ -1,5 +1,8 @@
 import './Home.scss';
 
+import TartaDeCerezas from '../assets/images/pastelcerezas 1.jpg';
+import arrowIcon from '../assets/images/arrowIconCreamy.svg';
+
 export const Home = () => {
   return (
     <>
@@ -7,7 +10,13 @@ export const Home = () => {
       <div className="widgets-Home">
         <div className="Home_widgetCard">
           <div className="Home_lastRecipes__container">
-            <p className="Home_widgetContainer">There's no recipes</p>
+            <div className="recipe-item">
+              <img src={TartaDeCerezas} alt="Recipe" className="recipe-image" />
+              <div className="recipe-content">
+                <span className="recipe-title">Tarta de Cerezas</span>
+                <img src={arrowIcon} alt="Go to recipe" className="recipe-arrow" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -16,13 +25,26 @@ export const Home = () => {
             <div className="Home_widgetTitle">
               <h3>Meals for today</h3>
             </div>
-            <p className="Home_widgetContainer">There's no meals for today</p>
+            <div className="Home_widgetContainer">
+              <div className="Home_meal">
+                Gachas con Arándanos
+                <img src={arrowIcon} alt="Go to recipe" className="recipe-arrow" />
+              </div>
+              <div className="Home_meal">
+                Paella
+                <img src={arrowIcon} alt="Go to recipe" className="recipe-arrow" />
+              </div>
+            </div>
           </div>
           <div className="Home_widgetCard">
             <div className="Home_widgetTitle">
               <h3>Shopping List</h3>
             </div>
-            <p className="Home_widgetContainer">There's nothing to buy today</p>
+            <ul className="Home_widgetContainer">
+              <li>Tomate</li>
+              <li>Aceite</li>
+              <li>Patatas</li>
+            </ul>
           </div>
         </div>
       </div>
