@@ -7,6 +7,7 @@ import arrowIcon from '../assets/images/ArrowIconGreen.svg';
 import examplePhotoRecipe1 from '../assets/images/examplePhotoRecipe1.jpg';
 import examplePhotorecipe2 from '../assets/images/examplePhotoRecipe2.jpg';
 import examplePhotoRecipe3 from '../assets/images/examplePhotoRecipe3.jpg';
+import TartaDeCerezas from '../assets/images/pastelcerezas 1.jpg';
 
 export function Recipes() {
   const [search, setSearch] = useState('');
@@ -19,6 +20,7 @@ export function Recipes() {
       { id: 1, name: 'Ensalada César con aguacate', image: examplePhotoRecipe1 },
       { id: 2, name: 'Tortitas con nata y fresas', image: examplePhotorecipe2 },
       { id: 3, name: 'Especias caseras', image: examplePhotoRecipe3 },
+      { id: 4, name: 'Tarta de Cerezas', image: TartaDeCerezas },
     ],
     [],
   );
