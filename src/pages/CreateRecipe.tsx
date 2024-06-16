@@ -39,7 +39,7 @@ const RecipeContainer = styled.div<RecipeContainerProps>`
   border: 10px solid ${props => props.borderColor};
   border-radius: 8px;
   padding: 50px;
-  margin: 40px auto;
+  margin: 20px auto;
   width: 800px;
   color: ${props => props.fontColor};
   font-family: ${props => props.fontFamilyText};
@@ -80,7 +80,6 @@ const SectionContainer = styled.div<{
   fontFamilyText: string;
 }>`
   background-color: ${props => props.backgroundColor};
-  padding: 16px;
   border-radius: 8px;
   margin-bottom: 24px;
   color: ${props => props.fontColor};
@@ -306,7 +305,9 @@ export const CreateRecipe: React.FC = () => {
                 )}
               </ImageContainer>
               {selectedLocalImage && (
-                <p style={{ color: backgroundColor }}>Local image selected: {selectedLocalImage.name}</p>
+                <p style={{ color: backgroundColor, display: 'none' }}>
+                  Local image selected: {selectedLocalImage.name}
+                </p>
               )}
               {isOpen && <Modal_IMG onClose={handleModalClose} onSelectImage={handleSelectImage} isOpen={isOpen} />}
             </SectionContainer>

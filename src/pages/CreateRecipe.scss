@@ -29,6 +29,10 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+.cr-createrecipe-title h3 {
+  padding: 0;
+}
 .createrecipe-title input {
   width: 100%;
   padding: 5px;
@@ -74,7 +78,7 @@
 }
 
 .cr-ingredients__item {
-  padding: 10px 4px 6px 4px;
+  padding: 4px 4px 6px 4px;
   list-style: disc;
   width: 100%;
   margin-left: auto;
@@ -100,7 +104,7 @@
   display: flex;
   column-gap: 12px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 2px;
   font-family: $font-text;
   width: 100%;
   box-sizing: border-box;
