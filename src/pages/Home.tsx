@@ -1,7 +1,7 @@
 import './Home.scss';
 
 import TartaDeCerezas from '../assets/images/pastelcerezas 1.jpg';
-import arrowIcon from '../assets/images/arrowIconCreamy.svg';
+import arrowIcon from '../assets/images/arrow-up-orange.svg';
 
 export const Home = () => {
   return (
@@ -41,9 +41,15 @@ export const Home = () => {
               <h3>Shopping List</h3>
             </div>
             <ul className="Home_widgetContainer">
-              <li>Tomate</li>
-              <li>Aceite</li>
-              <li>Patatas</li>
+              <li>
+                Tomate <input type="checkbox" />
+              </li>
+              <li>
+                Aceite <input type="checkbox" />
+              </li>
+              <li>
+                Patatas <input type="checkbox" />
+              </li>
             </ul>
           </div>
         </div>

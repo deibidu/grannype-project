@@ -36,8 +36,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $color-orange-neon;
-  color: $color-white-creamy;
+  border: solid 1px $color-orange-neon;
+  background-color: $color-white-creamy;
+  color: $color-grey-dust;
   padding: 16px;
   width: 100%;
   border-radius: 8px;
@@ -46,6 +47,7 @@
 .recipe-arrow {
   width: 24px;
   height: 24px;
+  color: $color-orange-neon;
   cursor: pointer;
 }
 .recipe-item {

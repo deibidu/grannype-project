@@ -8,10 +8,10 @@ const ProfilePage: React.FC = () => {
       <div className="topbar">Welcome, David</div>
       <div className="content">
         <img src={userIconGrey}></img>
-        <div className="input-box">Nombre de usuario</div>
-        <div className="input-box">Correo electrónico</div>
-        <div className="input-box">Contraseña</div>
-        <button className="accept-button">Aceptar</button>
+        <div className="input-box">David</div>
+        <div className="input-box">davidcooks@mail.com</div>
+        <div className="input-box">*******</div>
+        <button className="accept-button">Save</button>
       </div>
     </div>
   );
