@@ -32,6 +32,16 @@
   padding: 20px 45px;
   color: $color-grey-dust;
 }
+.Home_lastRecipes__container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.Home_widgetCard--no-border {
+  border: none;
+}
+
 .Home_meal {
   display: flex;
   justify-content: space-between;
@@ -45,41 +55,36 @@
   margin-bottom: 10px;
 }
 .recipe-arrow {
-  width: 24px;
-  height: 24px;
-  color: $color-orange-neon;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 .recipe-item {
   display: flex;
   flex-direction: column;
-  margin: 12px;
-  width: 610px;
-  height: 348px;
-  border: 2px solid $color-orange-neon;
-
+  border: 2px solid $color-grey-disabled;
   border-radius: 8px;
   margin-bottom: 1rem;
   overflow: hidden;
+  width: calc(33% - 1rem);
 }
 .recipe-image {
   width: 100%;
-  height: 245px;
   object-fit: cover;
+  height: 150px;
 }
 .recipe-title {
-  color: $color-white-creamy;
+  color: $color-orange-neon;
   font-family: $font-text;
-  font-size: 1.5rem;
+  font-size: 20px;
   font-weight: bold;
 }
 .recipe-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $color-orange-neon;
+  background-color: $color-white-creamy;
   padding: 1rem;
-  height: calc(100% - 245px);
 }
 
 .Home_CalendarAndShoppingList {

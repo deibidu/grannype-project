@@ -1,6 +1,8 @@
 import './Home.scss';
 
 import TartaDeCerezas from '../assets/images/pastelcerezas 1.jpg';
+import examplePhotoRecipe1 from '../assets/images/examplePhotoRecipe1.jpg';
+import examplePhotorecipe2 from '../assets/images/examplePhotoRecipe2.jpg';
 import arrowIcon from '../assets/images/arrow-up-orange.svg';
 
 export const Home = () => {
@@ -8,12 +10,28 @@ export const Home = () => {
     <>
       <h1 className={'font-title-sections'}>Your recipes are waiting for you</h1>
       <div className="widgets-Home">
-        <div className="Home_widgetCard">
+        <div className="Home_widgetCard--no-border">
           <div className="Home_lastRecipes__container">
             <div className="recipe-item">
               <img src={TartaDeCerezas} alt="Recipe" className="recipe-image" />
               <div className="recipe-content">
                 <span className="recipe-title">Tarta de Cerezas</span>
+                <img src={arrowIcon} alt="Go to recipe" className="recipe-arrow" />
+              </div>
+            </div>
+
+            <div className="recipe-item">
+              <img src={examplePhotoRecipe1} alt="Recipe" className="recipe-image" />
+              <div className="recipe-content">
+                <span className="recipe-title">Ensalada César con aguacate</span>
+                <img src={arrowIcon} alt="Go to recipe" className="recipe-arrow" />
+              </div>
+            </div>
+
+            <div className="recipe-item">
+              <img src={examplePhotorecipe2} alt="Recipe" className="recipe-image" />
+              <div className="recipe-content">
+                <span className="recipe-title">Tortitas con nata y fresas</span>
                 <img src={arrowIcon} alt="Go to recipe" className="recipe-arrow" />
               </div>
             </div>
