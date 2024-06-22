@@ -8,7 +8,7 @@ interface AddEventModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAddEvent: (newTitle: string) => void;
-  onDeleteEvent: (event: EventInput) => void;
+  onDeleteEvent: () => void;
   selectedEvent: EventInput | null;
 }
 
@@ -29,16 +29,11 @@ export function AddEventModal({ isOpen, onClose, onAddEvent, onDeleteEvent, sele
       return;
     }
 
-    const titleToAdd: string = selectedEvent ? title : title;
-    onAddEvent(titleToAdd);
-    handleCloseModal();
+    onAddEvent(title);
   };
 
   const handleDelete = () => {
-    if (selectedEvent) {
-      onDeleteEvent(selectedEvent);
-      handleCloseModal();
-    }
+    onDeleteEvent();
   };
 
   const handleCloseModal = () => {
@@ -49,7 +44,7 @@ export function AddEventModal({ isOpen, onClose, onAddEvent, onDeleteEvent, sele
   return (
     <Modal className={'modal modal-Calendar'} isOpen={isOpen} onRequestClose={handleCloseModal}>
       <div className="modal-header">
-        <h3>Add Meal</h3>
+        <h3>{selectedEvent ? 'Edit Meal' : 'Add Meal'}</h3>
       </div>
       <form className={'modal-content'} onSubmit={handleSubmit}>
         <input

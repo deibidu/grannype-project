@@ -35,28 +35,32 @@ export function ShoppingList() {
             <h3 className="font-title">Your shopping list</h3>
           </div>
 
-          <ul className="shoppingList-ul">
-            {items.map(item => (
-              <li
-                className="shoppingList-li"
-                key={item.id}
-                style={{
-                  textDecorationLine: item.checked ? 'line-through' : 'none',
-                }}
-              >
-                <input
-                  className="button__secondary-pink"
-                  type="checkbox"
-                  checked={item.checked}
-                  onChange={() => handleOnChange(item.id)}
-                />
-                {item.value}
-                <button className="delete_btn button__secondary-pink" onClick={() => handleRemove(item.id)}>
-                  -
-                </button>
-              </li>
-            ))}
-          </ul>
+          {items.length === 0 ? (
+            <p className="message-list">There's nothing to buy today.</p>
+          ) : (
+            <ul className="shoppingList-ul">
+              {items.map(item => (
+                <li
+                  className="shoppingList-li"
+                  key={item.id}
+                  style={{
+                    textDecorationLine: item.checked ? 'line-through' : 'none',
+                  }}
+                >
+                  <input
+                    className="button__secondary-pink"
+                    type="checkbox"
+                    checked={item.checked}
+                    onChange={() => handleOnChange(item.id)}
+                  />
+                  {item.value}
+                  <button className="delete_btn button__secondary-pink" onClick={() => handleRemove(item.id)}>
+                    -
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
 
           <div className="insertItem">
             <input

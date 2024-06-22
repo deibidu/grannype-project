@@ -8,7 +8,8 @@
   align-items: center;
   flex-direction: column;
   padding: 12px;
-  margin-bottom: 48px;
+  margin-top: 4rem;
+  margin-bottom: 8rem;
 }
 .Shoppinglist_title {
   background-color: $color-pink-bubblegum;
@@ -69,6 +70,11 @@ input[type="checkbox"] {
 
 .delete_btn {
   margin-left: 10px;
+}
+
+.message-list {
+  font-family: $font-title;
+  color: $color-grey-dust;
 }
 
 // Responsive

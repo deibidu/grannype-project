@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { AddEventModal } from '../components/calendar_components/CustomModal';
 import { EventInput } from '@fullcalendar/core/index.js';
+import { EventApi } from '@fullcalendar/core';
 import './Calendar.scss';
 
 export function Calendar() {
@@ -13,14 +14,12 @@ export function Calendar() {
   const [events, setEvents] = useState<EventInput[]>([
     {
       title: ' Gachas con Arándanos',
-      start: formattedToday,
-      end: formattedToday,
+      date: formattedToday,
       fixed: true,
     },
     {
       title: ' Lasaña',
-      start: formattedToday,
-      end: formattedToday,
+      date: formattedToday,
       fixed: true,
     },
   ]);
@@ -36,43 +35,46 @@ export function Calendar() {
     setSelectedEvent(null);
   };
 
-  const handleEventClick = (info: EventInput) => {
-    setSelectedEvent(info);
-    setIsOpen(true);
+  const handleEventClick = (info: { event: EventApi }) => {
+    const clickedEvent = events.find(event => event.title === info.event.title && event.date === info.event.startStr);
+    if (clickedEvent) {
+      setSelectedEvent(clickedEvent);
+      setIsOpen(true);
+    }
   };
 
   const handleModalSubmit = (newTitle: string) => {
     if (selectedEvent) {
-      // Edita el titulo del plato creado
       const updatedEvents = events.map(event => (event === selectedEvent ? { ...event, title: newTitle } : event));
       setEvents(updatedEvents);
     } else {
-      // Añadir nuevo menu
       const newEvent: EventInput = {
         title: newTitle,
-        start: new Date().toISOString(),
+        date: formattedToday,
+        fixed: true,
       };
-      setEvents(prevEvents => [...prevEvents, newEvent]);
+
+      const sameDayEvents = events.filter(event => event.date === newEvent.date);
+      if (sameDayEvents.length < 3) {
+        setEvents(prevEvents => [...prevEvents, newEvent]);
+      } else {
+        alert('Only three meals for day');
+      }
     }
     handleModalClose();
   };
 
   const handleDeleteEvent = () => {
     if (selectedEvent) {
-      // Verificar que el evento seleccionado sea válido
-      const eventToRemove = selectedEvent.event;
-      if (eventToRemove) {
-        // Borrar el evento del calendario
-        eventToRemove.remove();
-        // Cerrar el modal
-        handleModalClose();
-      }
+      const updatedEvents = events.filter(event => event !== selectedEvent);
+      setEvents(updatedEvents);
+      handleModalClose();
     }
   };
 
   return (
     <>
-      <h1 className="font-title-sections">What are you planning for this week?</h1>
+      <h1 className="font-title-sections">¿Qué estás planeando para esta semana?</h1>
       <div className="Calendar-container">
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
@@ -88,6 +90,7 @@ export function Calendar() {
             center: 'title',
             right: 'next',
           }}
+          displayEventTime={false}
         />
 
         {isOpen && (
