@@ -38,10 +38,6 @@
   flex-wrap: wrap;
 }
 
-.Home_widgetCard--no-border {
-  border: none;
-}
-
 .Home_meal {
   display: flex;
   justify-content: space-between;
@@ -92,5 +88,6 @@
   justify-content: space-between;
   flex-direction: row;
   align-content: center;
+  gap: 6px;
   margin-top: 32px;
 }
