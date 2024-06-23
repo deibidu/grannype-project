@@ -81,7 +81,7 @@ export function Recipes() {
             </div>
           ))
         ) : (
-          <p>There's no recipes</p>
+          <p style={{ marginBottom: '10rem' }}>There's no recipes</p>
         )}
       </div>
     </div>
