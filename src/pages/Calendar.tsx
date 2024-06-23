@@ -74,7 +74,7 @@ export function Calendar() {
 
   return (
     <>
-      <h1 className="font-title-sections">¿Qué estás planeando para esta semana?</h1>
+      <h1 className="font-title-sections">What are you going to plan this week?</h1>
       <div className="Calendar-container">
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
