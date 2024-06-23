@@ -36,7 +36,7 @@ export function ShoppingList() {
           </div>
 
           {items.length === 0 ? (
-            <p className="message-list">There's nothing to buy today.</p>
+            <p className="message-list">There's nothing to buy today</p>
           ) : (
             <ul className="shoppingList-ul">
               {items.map(item => (
