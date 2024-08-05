@@ -10,7 +10,7 @@
 
 .search-bar {
   display: flex;
-  align-items: right;
+  align-items: center;
   margin-bottom: 1rem;
   margin-left: auto;
   margin-right: auto;
@@ -24,9 +24,9 @@
 
   input {
     margin-left: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 10px 24px;
+    border: 2px solid $color-green-lettuce;
+    border-radius: 6px;
   }
 }
 
