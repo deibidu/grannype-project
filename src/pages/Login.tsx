@@ -22,8 +22,8 @@ export const Login = () => {
         </div>
         <form className="form" onSubmit={handleLogin}>
           <h3 className="slogan">Make your meals come true</h3>
-          <input type="text" placeholder="Username" className="input-login" />
-          <input type="password" placeholder="Password" className="input-login" />
+          <input type="text" placeholder="Username" className="input-login"></input>
+          <input type="password" placeholder="Password" className="input-login"></input>
           <div className="login-btn">
             <button type="submit" className="button__primary-orange">
               Login

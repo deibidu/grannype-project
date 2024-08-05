@@ -11,8 +11,6 @@ import TartaDeCerezas from '../assets/images/pastelcerezas 1.jpg';
 
 export function Recipes() {
   const [search, setSearch] = useState('');
-  const [showSearch, setShowSearch] = useState(false);
-  //  const newRecipeName = useMemo(() => '', []);
 
   const suggestions = useMemo(() => ['Aceite', 'Cebolla', 'Patata', 'Arroz', 'Huevo', 'Garbanzos'], []);
   const recipes = useMemo(
@@ -33,12 +31,7 @@ export function Recipes() {
 
   function handleSuggestClick(suggest: string) {
     setSearch(suggest);
-    setShowSearch(true);
   }
-
-  // function handleSearchButtonClick() {
-  //   setSearch(newRecipeName);
-  // }
 
   const filteredRecipes = useMemo(() => {
     if (search) {
@@ -51,16 +44,15 @@ export function Recipes() {
     <div className="recipes-container">
       <h1 className="font-title-sections">Your Recipes</h1>
       <div className="search-bar">
-        <img src={searchIcon} alt="Search" className="search-icon" onClick={() => setShowSearch(!showSearch)} />
-        {showSearch && (
-          <input
-            type="text"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            onKeyDown={handleSearch}
-            placeholder="Search your recipes..."
-          />
-        )}
+        <img src={searchIcon} alt="Search" className="search-icon" />
+
+        <input
+          type="text"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          onKeyDown={handleSearch}
+          placeholder="Search your recipes..."
+        />
       </div>
       <div className="suggestions">
         {suggestions.map(suggestion => (

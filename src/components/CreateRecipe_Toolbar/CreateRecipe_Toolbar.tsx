@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import Select, { SingleValue } from 'react-select';
-import { CompactPicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 import { FaFillDrip, FaParagraph, FaPalette } from 'react-icons/fa';
 import { BiBorderOuter } from 'react-icons/bi';
 import { PiSelectionBackgroundBold } from 'react-icons/pi';
@@ -57,6 +57,12 @@ const Toolbar: React.FC<ToolbarProps> = ({
   const currentFontSizeTitle = useMemo(() => '22px', []);
   const [selectedBackgroundImage, setSelectedBackgroundImage] = useState(backgroundImageOptions()[0]);
 
+  const [displayColorPicker, setDisplayColorPicker] = useState({
+    backgroundColor: false,
+    borderColor: false,
+    fontColor: false,
+  });
+
   const loadFont = (family: string) => {
     console.log(`Loading font: ${family}`); // Añadir un log para verificar la carga de fuentes
     WebFont.load({
@@ -107,6 +113,14 @@ const Toolbar: React.FC<ToolbarProps> = ({
     }
   };
 
+  const handleColorPickerClose = (picker: keyof typeof displayColorPicker) => {
+    setDisplayColorPicker({ ...displayColorPicker, [picker]: false });
+  };
+
+  const handleColorPickerOpen = (picker: keyof typeof displayColorPicker) => {
+    setDisplayColorPicker({ ...displayColorPicker, [picker]: true });
+  };
+
   return (
     <div className="toolbar">
       <div className="toolbar-button">
@@ -121,36 +135,98 @@ const Toolbar: React.FC<ToolbarProps> = ({
       <div className="toolbar-button">
         <BiBorderOuter />
         <label className="toolbar-label">Color Border</label>
-        <CompactPicker
-          color={currentColorBorder}
-          onChangeComplete={color => {
-            setCurrentColorBorder(color.hex);
-            setBorderColor(color.hex);
-          }}
-        />
+        <div>
+          <div
+            style={{
+              padding: '18px 32px',
+              background: currentColorBorder,
+              borderRadius: '4px',
+              boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
+              display: 'inline-block',
+              cursor: 'pointer',
+            }}
+            onClick={() => handleColorPickerOpen('borderColor')}
+          />
+          {displayColorPicker.borderColor ? (
+            <div style={{ position: 'absolute', zIndex: '2' }}>
+              <div
+                style={{ position: 'fixed', top: '0px', right: '0px', bottom: '0px', left: '0px' }}
+                onClick={() => handleColorPickerClose('borderColor')}
+              />
+              <SketchPicker
+                color={currentColorBorder}
+                onChange={color => {
+                  setCurrentColorBorder(color.hex);
+                  setBorderColor(color.hex);
+                }}
+              />
+            </div>
+          ) : null}
+        </div>
       </div>
       <div className="toolbar-button">
         <FaFillDrip />
         <label className="toolbar-label">Color Background Container</label>
-        <CompactPicker
-          color={currentColorBackground}
-          onChangeComplete={color => {
-            setCurrentColorBackground(color.hex);
-            setBackgroundColor(color.hex);
-          }}
-        />
+        <div>
+          <div
+            style={{
+              padding: '18px 32px',
+              background: currentColorBackground,
+              borderRadius: '4px',
+              boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
+              display: 'inline-block',
+              cursor: 'pointer',
+            }}
+            onClick={() => handleColorPickerOpen('backgroundColor')}
+          />
+          {displayColorPicker.backgroundColor ? (
+            <div style={{ position: 'absolute', zIndex: '2' }}>
+              <div
+                style={{ position: 'fixed', top: '0px', right: '0px', bottom: '0px', left: '0px' }}
+                onClick={() => handleColorPickerClose('backgroundColor')}
+              />
+              <SketchPicker
+                color={currentColorBackground}
+                onChange={color => {
+                  setCurrentColorBackground(color.hex);
+                  setBackgroundColor(color.hex);
+                }}
+              />
+            </div>
+          ) : null}
+        </div>
       </div>
-
       <div className="toolbar-button">
         <FaPalette />
         <label className="toolbar-label">Color Text</label>
-        <CompactPicker
-          color={currentColorFont}
-          onChangeComplete={color => {
-            setCurrentColorFont(color.hex);
-            setFontColor(color.hex);
-          }}
-        />
+        <div>
+          <div
+            style={{
+              padding: '18px 32px',
+              background: currentColorFont,
+              borderRadius: '4px',
+              boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
+              display: 'inline-block',
+              cursor: 'pointer',
+            }}
+            onClick={() => handleColorPickerOpen('fontColor')}
+          />
+          {displayColorPicker.fontColor ? (
+            <div style={{ position: 'absolute', zIndex: '2' }}>
+              <div
+                style={{ position: 'fixed', top: '0px', right: '0px', bottom: '0px', left: '0px' }}
+                onClick={() => handleColorPickerClose('fontColor')}
+              />
+              <SketchPicker
+                color={currentColorFont}
+                onChange={color => {
+                  setCurrentColorFont(color.hex);
+                  setFontColor(color.hex);
+                }}
+              />
+            </div>
+          ) : null}
+        </div>
       </div>
       <div className="toolbar-button">
         <MdTitle />

@@ -8,6 +8,7 @@
   background-size: cover;
   padding: 100px 300px;
 }
+
 .welcome {
   margin-left: auto;
   margin-right: auto;
@@ -19,9 +20,9 @@
 
 .welcome-title {
   text-align: center;
-  font-family: $font-text;
+  font-family: $font-title;
   color: $color-grey-dust;
-  line-height: 28px;
+  line-height: 32px;
   font-size: $h2;
   padding: 32px 64px;
   margin-left: auto;
@@ -29,7 +30,7 @@
 }
 
 .welcome-title span {
-  font-size: 72px;
+  font-size: 64px;
 }
 
 .form {
@@ -54,7 +55,6 @@
 .input-login {
   border: 1px solid $color-orange-neon;
   border-radius: 4px;
-  width: 30%;
   padding: 16px 12px;
 }
 
@@ -63,4 +63,137 @@
   flex-direction: row;
   margin: 24px;
   gap: 10px;
+}
+
+//Responsive
+$layout-breakpoint-1225: 1225px;
+
+@media (max-width: #{$layout-breakpoint-1225}) {
+  .login-page {
+    padding: 80px 200px;
+  }
+  .welcome-title {
+    line-height: 28px;
+    font-size: $h3;
+    padding: 24px 48px;
+  }
+
+  .welcome-title span {
+    font-size: 56px;
+  }
+
+  .form {
+    row-gap: 24px;
+    padding: 24px;
+    margin: 90px 90px 180px 90px;
+  }
+
+  .slogan {
+    font-size: $p;
+  }
+}
+
+$layout-breakpoint-992: 992px;
+
+@media (max-width: #{$layout-breakpoint-992}) {
+  .login-page {
+    padding: 60px 150px;
+  }
+
+  .welcome-title {
+    line-height: 24px;
+    font-size: $p;
+    padding: 20px 40px;
+  }
+
+  .welcome-title span {
+    font-size: 48px;
+  }
+
+  .form {
+    row-gap: 20px;
+    padding: 20px;
+    margin: 70px 70px 160px 70px;
+  }
+
+  .input-login {
+    padding: 14px 10px;
+  }
+}
+
+$layout-breakpoint-768: 768px;
+
+@media (max-width: #{$layout-breakpoint-768}) {
+  .login-page {
+    padding: 40px 100px;
+  }
+
+  .welcome-title {
+    line-height: 20px;
+    padding: 16px 32px;
+  }
+
+  .welcome-title span {
+    font-size: 40px;
+  }
+
+  .form {
+    row-gap: 16px;
+    padding: 16px;
+    margin: 50px 50px 140px 50px;
+  }
+
+  .input-login {
+    padding: 12px 8px;
+  }
+}
+
+$layout-breakpoint-576: 576px;
+
+@media (max-width: #{$layout-breakpoint-576}) {
+  .login-page {
+    padding: 20px 50px;
+  }
+
+  .welcome-title {
+    line-height: 18px;
+    padding: 12px 24px;
+  }
+
+  .welcome-title span {
+    font-size: 32px;
+  }
+
+  .form {
+    row-gap: 14px;
+    padding: 12px;
+    margin: 30px 30px 120px 30px;
+  }
+
+  .slogan {
+    font-size: 14px;
+  }
+
+  .input-login {
+    padding: 10px 6px;
+  }
+}
+
+$layout-breakpoint-475: 475px;
+
+@media (max-width: #{$layout-breakpoint-475}) {
+  .welcome {
+    padding: 12px 18px;
+  }
+  p {
+    font-size: 12px;
+  }
+  .button__primary-orange,
+  .button__secondary-orange {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+  .input-login {
+    font-size: 12px;
+  }
 }

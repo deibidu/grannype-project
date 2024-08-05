@@ -2,6 +2,10 @@
 @import "../sass/buttons.scss";
 @import "../sass/fonts.scss";
 
+#print-container-null {
+  display: none;
+}
+
 .createrecipe-inputMealTitle {
   background-color: #ffffff00;
 }
@@ -180,32 +184,56 @@
   font-family: inherit;
 }
 
-$layout-breakpoint-650: 650px;
+$layout-breakpoint-950: 950px;
 
-@media (max-width: #{$layout-breakpoint-650}) {
-  .createrecipe-ingedientsAndImage {
+@media (max-width: #{$layout-breakpoint-950}) {
+  #print-container {
+    display: none;
+  }
+
+  .cr-selection-btns {
+    display: none;
+  }
+
+  #print-container-null {
     display: flex;
+    margin: 120px;
     flex-direction: column;
-    flex-wrap: wrap;
-    gap: 0;
+    font-family: $font-text;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 64px;
+    background-color: $color-yellow-mustard;
+    color: $color-grey-dust;
+    border-radius: 16px;
   }
-  .cr-image {
-    align-items: center;
-    height: 100px;
-  }
-  .cr-ingredients {
-    height: 100px;
-    padding: 10px;
-  }
-  .cr-ingredients__item {
-    padding: 5px;
-  }
-  .button__primary-green {
-    padding: 12px 16px;
+}
+
+$layout-breakpoint-700: 700px;
+
+@media (max-width: #{$layout-breakpoint-700}) {
+  #print-container-null {
     font-size: 14px;
+    padding: 80px 60px;
+    margin: 80px;
   }
-  .button__secondary-green {
-    padding: 12px 16px;
-    font-size: 14px;
+}
+
+$layout-breakpoint-450: 450px;
+
+@media (max-width: #{$layout-breakpoint-450}) {
+  #print-container-null {
+    font-size: 12px;
+    padding: 64px 32px;
+    margin: 60px;
+  }
+}
+
+$layout-breakpoint-375: 375px;
+
+@media (max-width: #{$layout-breakpoint-375}) {
+  #print-container-null {
+    padding: 48px 24px;
+    margin: 50px;
   }
 }

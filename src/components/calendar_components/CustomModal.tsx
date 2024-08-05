@@ -59,7 +59,7 @@ export function AddEventModal({ isOpen, onClose, onAddEvent, onDeleteEvent, sele
             Accept
           </button>
           {selectedEvent && (
-            <button className="button__primary-blue" type="button" onClick={handleDelete}>
+            <button className="button__secondary-blue" type="button" onClick={handleDelete}>
               Delete
             </button>
           )}

@@ -235,6 +235,13 @@ export const CreateRecipe: React.FC = () => {
         setFontFamilyText={setCurrentFontFamilyText}
         setBackgroundImage={setCurrentBackgroundImage}
       />
+      <div id="print-container-null">
+        <h3>Sorry user</h3>
+        <span>
+          We're sorry but this function is only avariable on desktop version. We hope bring you to all platforms very
+          soon. Thank you for your pacience.
+        </span>
+      </div>
       <div id="print-container">
         <RecipeContainer
           className="RecipeContainer"

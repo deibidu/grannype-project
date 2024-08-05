@@ -23,7 +23,7 @@ export const Home = () => {
             <div className="recipe-item">
               <img src={examplePhotoRecipe1} alt="Recipe" className="recipe-image" />
               <div className="recipe-content">
-                <span className="recipe-title">Ensalada César con aguacate</span>
+                <span className="recipe-title">Ensalada César</span>
                 <img src={arrowIcon} alt="Go to recipe" className="recipe-arrow" />
               </div>
             </div>

@@ -32,10 +32,12 @@
   padding: 20px 45px;
   color: $color-grey-dust;
 }
+
 .Home_lastRecipes__container {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
 }
 
 .Home_meal {
@@ -46,15 +48,16 @@
   background-color: $color-white-creamy;
   color: $color-grey-dust;
   padding: 16px;
-  width: 100%;
   border-radius: 8px;
   margin-bottom: 10px;
 }
+
 .recipe-arrow {
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
+
 .recipe-item {
   display: flex;
   flex-direction: column;
@@ -64,17 +67,20 @@
   overflow: hidden;
   width: calc(33% - 1rem);
 }
+
 .recipe-image {
   width: 100%;
   object-fit: cover;
   height: 150px;
 }
+
 .recipe-title {
   color: $color-orange-neon;
   font-family: $font-text;
   font-size: 20px;
   font-weight: bold;
 }
+
 .recipe-content {
   display: flex;
   justify-content: space-between;
@@ -90,4 +96,102 @@
   align-content: center;
   gap: 6px;
   margin-top: 32px;
+}
+
+// Responsive
+
+$layout-breakpoint-768: 768px;
+
+@media (max-width: #{$layout-breakpoint-768}) {
+  .Home_CalendarAndShoppingList {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+$layout-breakpoint-760: 760px;
+
+@media (max-width: #{$layout-breakpoint-760}) {
+  h3 {
+    font-size: 16px;
+  }
+  span.recipe-title {
+    font-size: 16px;
+  }
+  .Home_meal {
+    font-size: 16px;
+  }
+}
+
+$layout-breakpoint-650: 650px;
+
+@media (max-width: #{$layout-breakpoint-650}) {
+  span.recipe-title {
+    font-size: 14px;
+  }
+  .recipe-arrow {
+    width: 24px;
+  }
+}
+
+$layout-breakpoint-560: 560px;
+
+@media (max-width: #{$layout-breakpoint-560}) {
+  h3 {
+    font-size: 14px;
+  }
+  span.recipe-title {
+    font-size: 14px;
+  }
+  .Home_meal {
+    font-size: 14px;
+  }
+  li {
+    font-size: 14px;
+  }
+  .Home_lastRecipes__container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+  .recipe-item {
+    flex: 0 0 auto; // Asegura que los elementos no se reduzcan y se mantengan en fila
+    width: 70%; // Ajusta el ancho según sea necesario
+    margin-right: 10px; // Añade espacio entre los elementos
+  }
+}
+
+$layout-breakpoint-425: 425px;
+
+@media (max-width: #{$layout-breakpoint-425}) {
+  h3 {
+    font-size: 12px;
+  }
+  span.recipe-title {
+    font-size: 12px;
+  }
+  .Home_meal {
+    font-size: 12px;
+  }
+  li {
+    font-size: 12px;
+  }
+  .Home_widgetTitle {
+    padding: 12px 30px;
+  }
+  .Home_widgetContainer {
+    padding: 12px 30px;
+  }
+}
+
+$layout-breakpoint-320: 320px;
+
+@media (max-width: #{$layout-breakpoint-320}) {
+  .Home_meal {
+    font-size: 11px;
+  }
+  li {
+    font-size: 11px;
+  }
 }
